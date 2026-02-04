@@ -1,19 +1,21 @@
-import Hero from "./components/Hero";
-import About from "./components/About";
-import FeaturedWork from "./components/FeaturedWork";
-import Book from "./components/Book";
-import Newsletter from "./components/Newsletter";
-import Footer from "./components/Footer";
+import Hero from './components/Hero'
+import About from './components/About'
+import FeaturedWork from './components/FeaturedWork'
+import FeaturedBrands from './components/FeaturedBrands'
+import Newsletter from './components/Newsletter'
+import Footer from './components/Footer'
 
-export default function App() {
+function App() {
   return (
-    <div className="font-body">
+    <div className="font-body bg-white text-primary">
       <Hero />
       <About />
       <FeaturedWork />
-      <Book />
+      <FeaturedBrands />
       <Newsletter />
       <Footer />
     </div>
-  );
+  )
 }
+
+export default App
