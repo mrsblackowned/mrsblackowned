@@ -1,21 +1,11 @@
-export default function About() {
-  return (
-    <section id="about" className="bg-secondary px-6 py-24">
-      <div className="mx-auto max-w-3xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-primary md:text-4xl">
-          About Kay
-        </h2>
-        <p className="mt-6 text-lg leading-relaxed text-primary/80">
-          Kay Martin is a beauty editorial writer and author whose work centers
-          Black women, ownership, and self-expression. Through sharp cultural
-          commentary and honest storytelling, she explores what it means to own
-          your narrative — in beauty, business, and beyond.
-        </p>
-        <p className="mt-4 text-lg leading-relaxed text-primary/80">
-          Her writing has been featured across editorial platforms and her debut
-          book brings that same unflinching voice to a wider audience.
-        </p>
-      </div>
-    </section>
-  );
-}
+const About = () => (
+  <section className="py-24 px-6 bg-white text-primary text-center">
+    <h2 className="text-4xl font-semibold mb-6">About Kay Martin</h2>
+    <p className="text-lg max-w-3xl mx-auto">
+      Kay Martin is a beauty editorial writer, author, and content creator dedicated
+      to documenting and celebrating Black-owned beauty brands through curated storytelling.
+    </p>
+  </section>
+)
+
+export default About

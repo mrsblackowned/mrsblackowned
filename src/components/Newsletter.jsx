@@ -1,31 +1,20 @@
-export default function Newsletter() {
-  return (
-    <section id="newsletter" className="bg-secondary px-6 py-24">
-      <div className="mx-auto max-w-xl text-center">
-        <h2 className="text-3xl font-bold tracking-tight text-primary md:text-4xl">
-          Stay in the Loop
-        </h2>
-        <p className="mt-4 text-lg text-primary/70">
-          New essays, book updates, and editorial drops — straight to your
-          inbox.
-        </p>
-        <form
-          onSubmit={(e) => e.preventDefault()}
-          className="mt-8 flex flex-col gap-3 sm:flex-row"
-        >
-          <input
-            type="email"
-            placeholder="Your email address"
-            className="flex-1 border-2 border-primary/20 bg-white px-5 py-3 text-base text-primary placeholder:text-primary/40 focus:border-primary focus:outline-none"
-          />
-          <button
-            type="submit"
-            className="border-2 border-primary bg-primary px-8 py-3 text-sm font-semibold uppercase tracking-wider text-white transition hover:bg-white hover:text-primary"
-          >
-            Subscribe
-          </button>
-        </form>
-      </div>
-    </section>
-  );
-}
+const Newsletter = () => (
+  <section className="py-24 px-6 bg-secondary text-primary text-center">
+    <h2 className="text-4xl font-semibold mb-6">Join the Newsletter</h2>
+    <p className="mb-6 max-w-xl mx-auto">
+      Stay updated with Kay Martin's latest editorial content and beauty features.
+    </p>
+    <form className="flex flex-col md:flex-row justify-center items-center gap-4">
+      <input
+        type="email"
+        placeholder="Enter your email"
+        className="p-3 rounded w-full md:w-auto"
+      />
+      <button className="bg-primary text-white font-semibold px-6 py-3 rounded hover:opacity-90 transition">
+        Subscribe
+      </button>
+    </form>
+  </section>
+)
+
+export default Newsletter
