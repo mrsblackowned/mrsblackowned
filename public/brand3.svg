@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="80" viewBox="0 0 200 80">
+  <rect width="200" height="80" fill="none"/>
+  <line x1="60" y1="25" x2="140" y2="25" stroke="#000000" stroke-width="1.5" opacity="0.4"/>
+  <text x="100" y="48" text-anchor="middle" font-family="sans-serif" font-size="14" font-weight="700" letter-spacing="5" fill="#000000" opacity="0.65">GLOW</text>
+  <line x1="60" y1="58" x2="140" y2="58" stroke="#000000" stroke-width="1.5" opacity="0.4"/>
+</svg>
