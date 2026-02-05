@@ -54,16 +54,13 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Editorial Portrait */}
           <div ref={imageRef} className="relative">
-            <div className="aspect-[3/4] bg-neutral-100 overflow-hidden">
-              <div className="w-full h-full bg-gradient-to-br from-neutral-200/80 via-neutral-100 to-transparent relative">
-                {/* Geometric accent */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-black/[0.04]" />
-                <div className="absolute inset-0 flex items-end justify-start p-8 md:p-12">
-                  <span className="text-black/10 text-[8rem] md:text-[12rem] font-serif leading-none select-none">
-                    K
-                  </span>
-                </div>
-              </div>
+            <div className="aspect-[3/4] bg-neutral-100 overflow-hidden relative">
+              <img
+                src="/polaroids/7.jpeg"
+                alt="Kay Martin"
+                className="w-full h-full object-cover grayscale"
+                loading="lazy"
+              />
             </div>
             <p className="mt-4 font-body text-[10px] tracking-[0.25em] text-black/30 uppercase">
               Editor & Author

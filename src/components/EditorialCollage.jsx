@@ -64,10 +64,13 @@ const EditorialCollage = () => {
           {/* Large left panel */}
           <div ref={grid1Ref} className="md:col-span-7 relative group cursor-pointer">
             <div className="aspect-[4/5] bg-neutral-100 overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-40 h-40 rounded-full border border-black/[0.04]" />
-              </div>
+              <img
+                src="/polaroids/4.jpeg"
+                alt="The Glow Collection"
+                className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent z-10" />
               <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 z-20">
                 <p className="font-body text-[10px] uppercase tracking-[0.3em] text-white/60 mb-2">
                   Skincare
@@ -89,9 +92,12 @@ const EditorialCollage = () => {
           <div className="md:col-span-5 flex flex-col gap-4 md:gap-6">
             <div ref={grid2Ref} className="relative group cursor-pointer flex-1">
               <div className="aspect-[4/3] md:aspect-auto md:h-full bg-black overflow-hidden relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-24 h-24 rounded-full border border-white/[0.06]" />
-                </div>
+                <img
+                  src="/polaroids/5.jpeg"
+                  alt="Noir Signature"
+                  className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 opacity-80"
+                  loading="lazy"
+                />
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20">
                   <p className="font-body text-[10px] uppercase tracking-[0.3em] text-white/50 mb-2">
                     Fragrance
@@ -105,9 +111,12 @@ const EditorialCollage = () => {
 
             <div ref={grid3Ref} className="relative group cursor-pointer flex-1">
               <div className="aspect-[4/3] md:aspect-auto md:h-full bg-neutral-200 overflow-hidden relative">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-24 h-24 border border-black/[0.06]" />
-                </div>
+                <img
+                  src="/polaroids/10.jpeg"
+                  alt="Crown & Glory"
+                  className="absolute inset-0 w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
+                  loading="lazy"
+                />
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-20">
                   <p className="font-body text-[10px] uppercase tracking-[0.3em] text-black/50 mb-2">
                     Hair Care

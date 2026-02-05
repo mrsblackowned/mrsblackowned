@@ -3,6 +3,11 @@ import gsap from 'gsap'
 
 const letters = ['M', 'R', 'S', 'B', 'L', 'A', 'C', 'K', 'O', 'W', 'N', 'E', 'D']
 
+const getImageSrc = (i) => {
+  if (i <= 10) return `/polaroids/${i}.jpeg`
+  return `/polaroids/${i}.svg`
+}
+
 const getFinalPositions = () => {
   const isMobile = window.innerWidth < 768
   const spacing = isMobile ? 55 : 75
@@ -96,7 +101,7 @@ const PolaroidIntro = ({ onComplete }) => {
             data-letter={letter}
           >
             <img
-              src={`/polaroids/${i}.svg`}
+              src={getImageSrc(i)}
               alt=""
               className="w-full h-full object-cover"
             />
