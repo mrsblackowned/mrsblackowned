@@ -10,6 +10,7 @@ export default {
       },
       fontFamily: {
         body: ['"Nunito Sans"', "sans-serif"],
+        serif: ['"Playfair Display"', "Georgia", "serif"],
       },
     },
   },
