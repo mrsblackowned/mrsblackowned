@@ -26,16 +26,16 @@ const Newsletter = () => {
   return (
     <section ref={sectionRef} className="py-32 px-6 bg-[#DFDCD5] text-black">
       <div ref={contentRef} className="max-w-xl mx-auto text-center">
-        <p className="uppercase tracking-[0.4em] text-sm text-black/40 mb-4">
+        <p className="uppercase tracking-[0.5em] text-xs text-black/40 mb-4">
           From the Editor
         </p>
 
-        <h2 className="font-body text-4xl md:text-5xl font-bold mb-6 tracking-tight">
-          Stay in the Know
+        <h2 className="font-serif text-4xl md:text-5xl font-medium mb-6 tracking-tight">
+          The Letter
         </h2>
 
-        <p className="font-body text-lg text-black/60 mb-10 leading-relaxed">
-          New essays, book updates, and editorial drops — straight to your inbox.
+        <p className="font-body text-base text-black/60 mb-10 leading-relaxed">
+          Essays, updates, and drops—delivered with intention.<br className="hidden md:block" />
           No spam. Just substance.
         </p>
 
@@ -56,8 +56,8 @@ const Newsletter = () => {
           </button>
         </form>
 
-        <p className="mt-6 text-xs text-black/40 tracking-wide">
-          Join 2,000+ readers who care about beauty, ownership, and culture.
+        <p className="mt-6 text-xs text-black/30 tracking-[0.15em]">
+          Join readers who care about ownership and culture.
         </p>
       </div>
     </section>

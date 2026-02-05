@@ -21,25 +21,35 @@ const Footer = () => {
   }, [])
 
   return (
-    <footer ref={footerRef} className="py-16 px-6 bg-black text-white">
-      <div ref={contentRef} className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
-        <div className="text-center md:text-left">
-          <p className="font-body text-lg font-semibold tracking-wide">Mrs Black Owned</p>
-          <p className="font-body text-sm text-white/50 mt-1">
-            &copy; {new Date().getFullYear()} Kay Martin. All rights reserved.
-          </p>
-        </div>
-        <nav className="flex gap-8">
-          <a href="#" className="font-body text-sm text-white/70 hover:text-white transition">
+    <footer ref={footerRef} className="py-24 px-6 bg-black text-white">
+      <div ref={contentRef} className="max-w-4xl mx-auto text-center">
+        <p className="font-serif text-2xl tracking-tight mb-3">
+          Mrs Black Owned
+        </p>
+        <p className="font-body text-xs text-white/40 tracking-[0.2em] uppercase mb-12">
+          Editorial by Kay Martin
+        </p>
+
+        <nav className="flex justify-center gap-10 mb-16">
+          <a
+            href="#"
+            className="font-body text-xs uppercase tracking-[0.15em] text-white/40 hover:text-white transition"
+          >
             Instagram
           </a>
-          <a href="#" className="font-body text-sm text-white/70 hover:text-white transition">
-            Twitter
-          </a>
-          <a href="#" className="font-body text-sm text-white/70 hover:text-white transition">
-            LinkedIn
+          <a
+            href="#"
+            className="font-body text-xs uppercase tracking-[0.15em] text-white/40 hover:text-white transition"
+          >
+            Substack
           </a>
         </nav>
+
+        <div className="w-12 h-px bg-white/10 mx-auto mb-8"></div>
+
+        <p className="font-body text-xs text-white/20">
+          &copy; {new Date().getFullYear()} Mrs Black Owned
+        </p>
       </div>
     </footer>
   )
