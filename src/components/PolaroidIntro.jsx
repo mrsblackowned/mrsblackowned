@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 
 // Letters for "MRS BLACK OWNED" - each polaroid represents a letter
@@ -20,12 +20,10 @@ const PolaroidIntro = ({ onComplete }) => {
   const containerRef = useRef(null)
   const polaroidsRef = useRef([])
   const mastheadRef = useRef(null)
-  const [isAnimating, setIsAnimating] = useState(true)
 
   useEffect(() => {
     const tl = gsap.timeline({
       onComplete: () => {
-        setIsAnimating(false)
         setTimeout(() => onComplete?.(), 300)
       },
     })
@@ -103,7 +101,7 @@ const PolaroidIntro = ({ onComplete }) => {
     <section
       ref={containerRef}
       className="fixed inset-0 z-50 flex items-center justify-center bg-[#DFDCD5] overflow-hidden"
-      style={{ pointerEvents: isAnimating ? 'auto' : 'none' }}
+      style={{ pointerEvents: 'none' }}
     >
       {/* Polaroids */}
       <div className="absolute inset-0 flex items-center justify-center">

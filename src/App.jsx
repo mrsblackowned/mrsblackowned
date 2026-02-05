@@ -17,16 +17,28 @@ function HomePage() {
   const [introComplete, setIntroComplete] = useState(true)
 
   useEffect(() => {
+    // Respect reduced motion preference - skip intro entirely
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) {
+      localStorage.setItem(INTRO_STORAGE_KEY, 'true')
+      return
+    }
+
     // Check if user has seen the intro before
     const hasSeenIntro = localStorage.getItem(INTRO_STORAGE_KEY)
 
     if (!hasSeenIntro) {
       setShowIntro(true)
       setIntroComplete(false)
+      // Lock scroll during intro
+      document.body.style.overflow = 'hidden'
     }
   }, [])
 
   const handleIntroComplete = () => {
+    // Restore scroll
+    document.body.style.overflow = ''
+
     // Mark intro as seen
     localStorage.setItem(INTRO_STORAGE_KEY, 'true')
     setIntroComplete(true)
