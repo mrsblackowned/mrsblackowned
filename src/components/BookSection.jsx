@@ -10,7 +10,6 @@ const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
 const BookSection = () => {
   const sectionRef = useRef(null)
   const coverRef = useRef(null)
-  const contentRef = useRef(null)
 
   useEffect(() => {
     gsap.from(coverRef.current, {
@@ -19,22 +18,9 @@ const BookSection = () => {
         start: 'top 70%',
         toggleActions: 'play none none reverse',
       },
-      x: -100,
       opacity: 0,
-      duration: 1,
-      ease: 'power3.out',
-    })
-
-    gsap.from(contentRef.current, {
-      scrollTrigger: {
-        trigger: sectionRef.current,
-        start: 'top 70%',
-        toggleActions: 'play none none reverse',
-      },
-      x: 100,
-      opacity: 0,
-      duration: 1,
-      delay: 0.2,
+      y: 80,
+      duration: 1.2,
       ease: 'power3.out',
     })
   }, [])
@@ -57,71 +43,63 @@ const BookSection = () => {
     <section
       ref={sectionRef}
       id="book"
-      className="py-32 px-6 bg-black text-white"
+      className="py-40 px-6 bg-[#DFDCD5]"
     >
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-        {/* Book Cover */}
-        <div ref={coverRef} className="relative">
-          <div className="relative mx-auto w-72 md:w-80">
-            {/* Cover shadow */}
-            <div className="absolute inset-0 bg-[#DFDCD5]/20 blur-3xl transform translate-x-4 translate-y-4"></div>
+      {/* Magazine Cover */}
+      <div
+        ref={coverRef}
+        className="relative max-w-4xl mx-auto bg-black text-white aspect-[3/4] md:aspect-[4/5] shadow-2xl overflow-hidden"
+      >
+        {/* Cover Content */}
+        <div className="absolute inset-0 flex flex-col justify-between p-8 md:p-16">
+          {/* Masthead */}
+          <div>
+            <p className="uppercase tracking-[0.5em] text-sm text-[#DFDCD5]/60 mb-2">
+              Mrs Black Owned
+            </p>
+            <div className="w-12 h-px bg-[#DFDCD5]/30"></div>
+          </div>
 
-            {/* Cover */}
-            <div className="relative bg-[#DFDCD5] aspect-[3/4] rounded-sm shadow-2xl overflow-hidden">
-              <div className="absolute inset-0 flex flex-col justify-between p-8">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.4em] text-black/50 mb-2">
-                    Issue 01
-                  </p>
-                  <div className="w-12 h-px bg-black/30"></div>
-                </div>
+          {/* Cover Headlines */}
+          <div className="max-w-lg">
+            <h1 className="font-body text-5xl md:text-7xl font-bold leading-[0.95] tracking-tight mb-8">
+              Beauty,<br />
+              Ownership,<br />
+              Legacy
+            </h1>
 
-                <div className="text-center">
-                  <h3 className="font-body text-3xl font-bold text-black tracking-tight leading-tight">
-                    Mrs Black<br />Owned
-                  </h3>
-                  <p className="mt-4 text-sm text-black/70 tracking-wide">
-                    The Black Beauty Experience
-                  </p>
-                </div>
+            <ul className="space-y-3 text-[#DFDCD5]/70 text-base md:text-lg">
+              <li>• Inside the brands shaping culture</li>
+              <li>• Editorial stories by Kay Martin</li>
+              <li>• A modern beauty archive</li>
+            </ul>
+          </div>
 
-                <div className="text-center">
-                  <p className="text-xs uppercase tracking-[0.3em] text-black/50">
-                    Kay Martin
-                  </p>
-                </div>
-              </div>
+          {/* Bottom Row */}
+          <div className="flex justify-between items-end">
+            {/* Edition Badge */}
+            <button
+              onClick={handleCheckout}
+              className="border border-[#DFDCD5] px-6 py-3 uppercase tracking-[0.2em] text-xs md:text-sm text-[#DFDCD5] hover:bg-[#DFDCD5] hover:text-black transition duration-300"
+            >
+              Purchase Digital Edition
+            </button>
+
+            {/* Price */}
+            <div className="text-right">
+              <p className="text-3xl md:text-4xl font-bold text-[#DFDCD5]">$25</p>
+              <p className="text-xs uppercase tracking-widest text-[#DFDCD5]/50 mt-1">
+                Instant Access
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Content */}
-        <div ref={contentRef} className="text-center md:text-left">
-          <p className="uppercase tracking-[0.4em] text-sm text-[#DFDCD5]/50 mb-4">
-            The Digital Edition
-          </p>
-
-          <h2 className="font-body text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight">
-            The Black Beauty<br />Experience
-          </h2>
-
-          <p className="font-body text-lg text-white/70 leading-relaxed mb-8 max-w-md">
-            A curated exploration of Black-owned beauty brands, their founders,
-            and the stories that define a movement. Part manifesto, part celebration —
-            this is the issue the beauty industry needs.
-          </p>
-
-          <div className="space-y-4">
-            <p className="text-sm text-white/50 tracking-wide">
-              Digital Edition • Instant Access • $25
-            </p>
-
-            <button
-              onClick={handleCheckout}
-              className="inline-block border border-[#DFDCD5] text-[#DFDCD5] px-10 py-4 font-semibold tracking-wide hover:bg-[#DFDCD5] hover:text-black transition duration-300"
-            >
-              Purchase the Edition
-            </button>
+        {/* Decorative corner accent */}
+        <div className="absolute top-0 right-0 w-24 h-24 md:w-32 md:h-32">
+          <div className="absolute top-4 right-4 md:top-6 md:right-6 text-right">
+            <p className="text-xs uppercase tracking-widest text-[#DFDCD5]/40">Issue</p>
+            <p className="text-2xl md:text-3xl font-bold text-[#DFDCD5]/60">01</p>
           </div>
         </div>
       </div>
