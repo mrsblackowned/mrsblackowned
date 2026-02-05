@@ -10,36 +10,42 @@ const products = [
     brand: 'Ami Cole',
     price: '$32',
     tag: 'Best Seller',
+    image: '/polaroids/0.jpeg',
   },
   {
     name: 'Shea Butter Balm',
     brand: 'Buttah Skin',
     price: '$26',
     tag: 'New',
+    image: '/polaroids/1.jpeg',
   },
   {
     name: 'Noir Eau de Parfum',
     brand: 'Forvr Mood',
     price: '$65',
     tag: null,
+    image: '/polaroids/2.jpeg',
   },
   {
     name: 'Glow Oil',
     brand: 'Topicals',
     price: '$36',
     tag: 'Trending',
+    image: '/polaroids/6.jpeg',
   },
   {
     name: 'Honey Mask',
     brand: 'Eadem',
     price: '$42',
     tag: null,
+    image: '/polaroids/3.jpeg',
   },
   {
     name: 'Curl Elixir',
     brand: 'Bread Beauty',
     price: '$28',
     tag: 'Staff Pick',
+    image: '/polaroids/10.jpeg',
   },
 ]
 
@@ -110,13 +116,14 @@ const ProductShowcase = () => {
               ref={(el) => (cardsRef.current[i] = el)}
               className="group cursor-pointer"
             >
-              {/* Product Image Placeholder */}
+              {/* Product Image */}
               <div className="relative aspect-[3/4] bg-neutral-100 mb-4 overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-neutral-200/50 to-transparent" />
-                {/* Geometric placeholder */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-20 h-20 md:w-28 md:h-28 rounded-full border border-black/[0.06]" />
-                </div>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                  loading="lazy"
+                />
                 {/* Tag */}
                 {product.tag && (
                   <span className="absolute top-4 left-4 bg-black text-white text-[10px] uppercase tracking-[0.15em] px-3 py-1.5 font-body">
