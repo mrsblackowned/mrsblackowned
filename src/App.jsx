@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
+import Header from './components/Header'
 import Hero from './components/Hero'
 import BookSection from './components/BookSection'
 import Platform from './components/Platform'
@@ -57,6 +58,7 @@ function HomePage() {
       )}
 
       <div style={{ opacity: introComplete ? 1 : 0, transition: 'opacity 0.5s ease' }}>
+        <Header />
         <Hero />
         <BookSection />
         <Platform />
