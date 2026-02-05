@@ -23,9 +23,12 @@ const Footer = () => {
   return (
     <footer ref={footerRef} className="py-24 px-6 bg-black text-white">
       <div ref={contentRef} className="max-w-4xl mx-auto text-center">
-        <p className="font-serif text-2xl tracking-tight mb-3">
-          Mrs Black Owned
-        </p>
+        {/* Logo wordmark */}
+        <img
+          src="/Logos/BBAlternateTransparent.png"
+          alt="Beauty By Mrs. Black Owned"
+          className="h-12 md:h-14 w-auto mx-auto mb-4 invert opacity-90"
+        />
         <p className="font-body text-xs text-white/40 tracking-[0.2em] uppercase mb-12">
           Editorial by Kay Martin
         </p>
