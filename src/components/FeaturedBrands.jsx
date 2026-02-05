@@ -31,6 +31,7 @@ const FeaturedBrands = () => {
       })
 
       cardsRef.current.forEach((card, i) => {
+        if (!card) return
         gsap.from(card, {
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -50,37 +51,37 @@ const FeaturedBrands = () => {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-32 px-6 bg-white text-black">
+    <section ref={sectionRef} className="py-20 md:py-24 px-6 bg-neutral-100 text-black">
       <div className="max-w-5xl mx-auto">
-        <div ref={headingRef} className="text-center mb-20">
-          <p className="uppercase tracking-[0.4em] text-xs text-black/40 mb-4">
+        <div ref={headingRef} className="text-center mb-14">
+          <p className="font-body text-[11px] uppercase tracking-[0.3em] text-black/40 mb-4">
             The Archive
           </p>
-          <h2 className="font-serif text-4xl md:text-5xl font-medium mb-6 tracking-tight">
+          <h2 className="font-serif text-3xl md:text-4xl font-medium tracking-tight">
             Featured Brands
           </h2>
-          <p className="font-body text-base text-black/50 max-w-lg mx-auto leading-relaxed">
+          <p className="font-body text-sm text-black/40 max-w-lg mx-auto mt-3 leading-relaxed">
             Black-owned. Founder-led. Building legacies, not trends.
           </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
           {brands.map((brand, i) => (
             <div
               key={i}
               ref={(el) => (cardsRef.current[i] = el)}
-              className="aspect-square bg-[#FAFAF9] border border-black/5 flex items-center justify-center p-8 hover:border-black/20 transition-colors duration-300"
+              className="aspect-square bg-white border border-black/[0.04] flex items-center justify-center p-8 hover:border-accent/50 transition-colors duration-300"
             >
               <img
                 src={brand.src}
                 alt={brand.alt}
-                className="max-h-12 md:max-h-16 w-auto opacity-70 hover:opacity-100 transition-opacity duration-300"
+                className="max-h-12 md:max-h-16 w-auto opacity-60 hover:opacity-100 transition-opacity duration-300"
               />
             </div>
           ))}
         </div>
 
-        <p className="text-center mt-12 text-xs tracking-[0.2em] text-black/30 uppercase">
+        <p className="text-center mt-10 font-body text-[10px] tracking-[0.25em] text-black/30 uppercase">
           More brands featured inside the issue
         </p>
       </div>

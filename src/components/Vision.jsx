@@ -28,18 +28,18 @@ const Vision = () => {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-32 md:py-40 px-6 bg-secondary">
+    <section ref={sectionRef} className="py-24 md:py-32 px-6 bg-neutral-100">
       <div ref={contentRef} className="max-w-3xl mx-auto text-center">
-        <p className="uppercase tracking-[0.5em] text-xs text-black/40 mb-6">
+        <p className="font-body text-[11px] uppercase tracking-[0.3em] text-black/40 mb-4">
           The Vision
         </p>
 
-        <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-black tracking-tight leading-[1.1] mb-8">
-          A Living Body of Work.
+        <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-black tracking-tight leading-[1.1] mb-6">
+          A Living Body of Work
         </h2>
 
-        <p className="font-body text-lg md:text-xl text-black/60 leading-relaxed">
-          A multi-year, annually released body of work designed to become a reference point in beauty history—opening pathways to funding, partnerships, and future brand extensions, including fragrance.
+        <p className="font-body text-sm md:text-base text-black/50 leading-relaxed">
+          A multi-year, annually released body of work designed to become a reference point in beauty history — opening pathways to funding, partnerships, and future brand extensions, including fragrance.
         </p>
       </div>
     </section>

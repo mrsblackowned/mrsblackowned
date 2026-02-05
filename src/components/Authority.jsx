@@ -28,18 +28,21 @@ const Authority = () => {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-32 md:py-40 px-6 bg-white">
-      <div ref={contentRef} className="max-w-3xl mx-auto text-center">
-        <p className="uppercase tracking-[0.5em] text-xs text-black/40 mb-6">
+    <section ref={sectionRef} className="py-24 md:py-32 px-6 bg-white relative overflow-hidden">
+      {/* Geometric semicircle accent */}
+      <div className="absolute -bottom-32 left-1/2 -translate-x-1/2 w-64 h-32 rounded-t-full border border-black/[0.04]" />
+
+      <div ref={contentRef} className="max-w-3xl mx-auto text-center relative z-10">
+        <p className="font-body text-[11px] uppercase tracking-[0.3em] text-black/40 mb-4">
           The Authority
         </p>
 
-        <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-black tracking-tight leading-[1.1] mb-8">
-          Archival by Design.
+        <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-black tracking-tight leading-[1.1] mb-6">
+          Archival by Design
         </h2>
 
-        <p className="font-body text-lg md:text-xl text-black/60 leading-relaxed">
-          Curated with discernment, research, and cultural integrity—this is not trend-based content. It is archival-quality work positioned for libraries, institutions, salons, and private collectors.
+        <p className="font-body text-sm md:text-base text-black/50 leading-relaxed">
+          Curated with discernment, research, and cultural integrity — this is not trend-based content. It is archival-quality work positioned for libraries, institutions, salons, and private collectors.
         </p>
       </div>
     </section>

@@ -1,10 +1,8 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 
-// Letters for "MRS BLACK OWNED" - each polaroid represents a letter
 const letters = ['M', 'R', 'S', 'B', 'L', 'A', 'C', 'K', 'O', 'W', 'N', 'E', 'D']
 
-// Final positions for masthead formation (centered grid)
 const getFinalPositions = () => {
   const isMobile = window.innerWidth < 768
   const spacing = isMobile ? 55 : 75
@@ -30,7 +28,6 @@ const PolaroidIntro = ({ onComplete }) => {
 
     const finalPositions = getFinalPositions()
 
-    // Phase 1: Polaroids drop in chaotically
     tl.from(polaroidsRef.current, {
       y: -800,
       rotation: () => gsap.utils.random(-30, 30),
@@ -41,10 +38,8 @@ const PolaroidIntro = ({ onComplete }) => {
       ease: 'power4.out',
     })
 
-    // Phase 2: Brief pause for chaos to settle
     tl.to({}, { duration: 0.6 })
 
-    // Phase 3: Organize into masthead positions
     tl.to(polaroidsRef.current, {
       duration: 1.2,
       rotation: 0,
@@ -55,7 +50,6 @@ const PolaroidIntro = ({ onComplete }) => {
       stagger: 0.04,
     })
 
-    // Phase 4: Fade polaroids back
     tl.to(
       polaroidsRef.current,
       {
@@ -67,23 +61,13 @@ const PolaroidIntro = ({ onComplete }) => {
       '-=0.2'
     )
 
-    // Phase 5: Reveal masthead text
     tl.fromTo(
       mastheadRef.current,
-      {
-        opacity: 0,
-        y: 20,
-      },
-      {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        ease: 'power3.out',
-      },
+      { opacity: 0, y: 20 },
+      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
       '-=0.4'
     )
 
-    // Phase 6: Hold, then fade out everything
     tl.to({}, { duration: 1.2 })
 
     tl.to(containerRef.current, {
@@ -100,10 +84,9 @@ const PolaroidIntro = ({ onComplete }) => {
   return (
     <section
       ref={containerRef}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-[#DFDCD5] overflow-hidden"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-white overflow-hidden"
       style={{ pointerEvents: 'none' }}
     >
-      {/* Polaroids */}
       <div className="absolute inset-0 flex items-center justify-center">
         {letters.map((letter, i) => (
           <div
@@ -121,16 +104,15 @@ const PolaroidIntro = ({ onComplete }) => {
         ))}
       </div>
 
-      {/* Masthead text overlay */}
       <div
         ref={mastheadRef}
         className="relative z-10 text-center opacity-0"
       >
-        <h1 className="font-body text-4xl md:text-6xl lg:text-7xl font-bold text-black tracking-tight">
+        <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-medium text-black tracking-tight">
           MRS BLACK OWNED
         </h1>
-        <p className="mt-4 text-sm md:text-base tracking-[0.4em] text-black/50 uppercase">
-          The Editorial
+        <p className="mt-4 font-script text-xl md:text-2xl text-accent">
+          timeless elegance
         </p>
       </div>
     </section>

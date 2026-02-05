@@ -16,9 +16,16 @@ const Success = () => {
   }, [])
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 bg-secondary">
+    <section className="min-h-screen flex items-center justify-center px-6 bg-white">
       <div ref={contentRef} className="text-center max-w-lg">
-        <p className="uppercase tracking-[0.5em] text-xs text-black/40 mb-8">
+        {/* Checkmark icon */}
+        <div className="w-16 h-16 rounded-full border-2 border-accent flex items-center justify-center mx-auto mb-8">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C8B590" strokeWidth="2">
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </div>
+
+        <p className="font-body text-[11px] uppercase tracking-[0.3em] text-black/40 mb-6">
           Issue 01
         </p>
 
@@ -26,27 +33,25 @@ const Success = () => {
           Welcome to<br />the Archive
         </h1>
 
-        <div className="w-12 h-px bg-black/20 mx-auto mb-8"></div>
+        <div className="w-12 h-px bg-accent mx-auto mb-8" />
 
-        <p className="font-body text-lg text-black/70 leading-relaxed mb-4">
+        <p className="font-body text-base text-black/60 leading-relaxed mb-4">
           Your digital edition is ready.
         </p>
-        <p className="font-body text-base text-black/50 leading-relaxed mb-10">
-          Check your inbox for instant access to the full issue—<br className="hidden md:block" />
+        <p className="font-body text-sm text-black/40 leading-relaxed mb-10">
+          Check your inbox for instant access to the full issue —
           profiles, essays, and the complete archive.
         </p>
 
-        <div className="space-y-4">
-          <Link
-            to="/"
-            className="inline-block bg-black text-white text-sm uppercase tracking-[0.2em] px-10 py-4 hover:bg-black/80 transition duration-300"
-          >
-            Continue Exploring
-          </Link>
-        </div>
+        <Link
+          to="/"
+          className="inline-block bg-black text-white font-body text-xs uppercase tracking-[0.2em] px-10 py-4 hover:bg-accent hover:text-black transition-all duration-300 rounded-sm"
+        >
+          Continue Exploring
+        </Link>
 
-        <p className="mt-12 text-xs text-black/30 tracking-wide">
-          A confirmation has been sent to your email.
+        <p className="mt-10 font-body text-[10px] text-black/25 tracking-[0.2em] uppercase">
+          A confirmation has been sent to your email
         </p>
       </div>
     </section>
