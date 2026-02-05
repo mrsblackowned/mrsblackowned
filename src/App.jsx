@@ -60,7 +60,6 @@ function HomePage() {
       )}
 
       <div style={{ opacity: introComplete ? 1 : 0, transition: 'opacity 0.5s ease' }}>
-        <AnnouncementBar />
         <Header />
         <Hero />
         <ProductShowcase />

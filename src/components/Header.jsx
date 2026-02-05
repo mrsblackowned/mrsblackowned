@@ -85,7 +85,7 @@ const Header = () => {
           <img
             src="/Logos/BBMainLogoTransparent.png"
             alt="Mrs Black Owned"
-            className="h-10 md:h-12 w-auto"
+            className="h-14 md:h-16 w-auto max-w-[200px] md:max-w-[260px]"
           />
         </a>
 
