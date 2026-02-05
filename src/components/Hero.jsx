@@ -44,9 +44,13 @@ const Hero = () => {
         <p ref={subRef} className="font-body text-lg md:text-xl text-[#DFDCD5] mb-10 leading-relaxed">
           Beauty editorial, curated stories, and the book by Kay Martin
         </p>
-        <button ref={buttonRef} className="bg-[#DFDCD5] text-black font-semibold px-10 py-4 rounded hover:opacity-90 transition transform">
-          Explore the Book
-        </button>
+        <a
+          ref={buttonRef}
+          href="#book"
+          className="inline-block bg-[#DFDCD5] text-black font-semibold px-10 py-4 hover:bg-white transition transform"
+        >
+          View the Issue
+        </a>
       </div>
 
       <img
