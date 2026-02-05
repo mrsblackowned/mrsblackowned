@@ -4,35 +4,59 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
+const polaroidImages = [
+  { src: '/polaroids/0.jpeg', x: '-35%', y: '-20%', rotate: -12, scale: 0.9 },
+  { src: '/polaroids/1.jpeg', x: '30%', y: '-25%', rotate: 8, scale: 0.85 },
+  { src: '/polaroids/2.jpeg', x: '-40%', y: '15%', rotate: 6, scale: 0.8 },
+  { src: '/polaroids/3.jpeg', x: '35%', y: '20%', rotate: -10, scale: 0.85 },
+  { src: '/polaroids/4.jpeg', x: '-15%', y: '-35%', rotate: 15, scale: 0.7 },
+  { src: '/polaroids/5.jpeg', x: '15%', y: '35%', rotate: -8, scale: 0.75 },
+  { src: '/polaroids/6.jpeg', x: '45%', y: '-5%', rotate: 5, scale: 0.7 },
+  { src: '/polaroids/7.jpeg', x: '-45%', y: '35%', rotate: -15, scale: 0.65 },
+]
+
 const Hero = () => {
   const sectionRef = useRef(null)
   const headlineRef = useRef(null)
   const subRef = useRef(null)
   const ctaRef = useRef(null)
   const scriptRef = useRef(null)
-  const decorRef = useRef(null)
+  const polaroidsRef = useRef([])
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Polaroids float in
+      polaroidsRef.current.forEach((el, i) => {
+        if (!el) return
+        gsap.from(el, {
+          opacity: 0,
+          scale: 0.3,
+          rotation: gsap.utils.random(-30, 30),
+          duration: 1.2,
+          delay: 0.1 + i * 0.1,
+          ease: 'power3.out',
+        })
+      })
+
+      gsap.from(scriptRef.current, {
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        delay: 0.5,
+        ease: 'power3.out',
+      })
       gsap.from(headlineRef.current, {
         y: 60,
         opacity: 0,
         duration: 1.2,
-        delay: 0.2,
+        delay: 0.3,
         ease: 'power3.out',
       })
       gsap.from(subRef.current, {
         y: 40,
         opacity: 0,
         duration: 1,
-        delay: 0.5,
-        ease: 'power3.out',
-      })
-      gsap.from(scriptRef.current, {
-        y: 30,
-        opacity: 0,
-        duration: 1,
-        delay: 0.7,
+        delay: 0.6,
         ease: 'power3.out',
       })
       gsap.from(ctaRef.current, {
@@ -42,12 +66,20 @@ const Hero = () => {
         delay: 0.9,
         ease: 'power3.out',
       })
-      gsap.from(decorRef.current, {
-        scale: 0,
-        opacity: 0,
-        duration: 1.4,
-        delay: 0.4,
-        ease: 'power3.out',
+
+      // Subtle parallax on polaroids during scroll
+      polaroidsRef.current.forEach((el, i) => {
+        if (!el) return
+        gsap.to(el, {
+          y: (i % 2 === 0 ? -40 : 40),
+          ease: 'none',
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: 'top top',
+            end: 'bottom top',
+            scrub: true,
+          },
+        })
       })
     }, sectionRef)
 
@@ -59,16 +91,52 @@ const Hero = () => {
       ref={sectionRef}
       className="relative min-h-screen flex flex-col justify-center items-center text-center px-6 bg-white overflow-hidden"
     >
-      {/* Geometric accent - large circle */}
-      <div
-        ref={decorRef}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] md:w-[700px] md:h-[700px] rounded-full border border-black/[0.04]"
-      />
+      {/* Scattered polaroid photos behind text */}
+      {polaroidImages.map((p, i) => (
+        <div
+          key={i}
+          ref={(el) => (polaroidsRef.current[i] = el)}
+          className="absolute hidden md:block"
+          style={{
+            left: `calc(50% + ${p.x})`,
+            top: `calc(50% + ${p.y})`,
+            transform: `rotate(${p.rotate}deg) scale(${p.scale})`,
+          }}
+        >
+          <div className="w-[140px] lg:w-[170px] bg-white p-2 pb-8 shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+            <img
+              src={p.src}
+              alt=""
+              className="w-full aspect-square object-cover grayscale opacity-70"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      ))}
 
-      {/* Diagonal line accents */}
-      <div className="absolute top-20 right-10 md:right-20 w-px h-24 bg-black/[0.06] rotate-45" />
-      <div className="absolute bottom-32 left-10 md:left-20 w-px h-20 bg-black/[0.06] -rotate-45" />
+      {/* Mobile: show fewer polaroids */}
+      {polaroidImages.slice(0, 4).map((p, i) => (
+        <div
+          key={`m-${i}`}
+          className="absolute md:hidden"
+          style={{
+            left: `calc(50% + ${parseInt(p.x) * 0.6}%)`,
+            top: `calc(50% + ${parseInt(p.y) * 0.6}%)`,
+            transform: `rotate(${p.rotate}deg) scale(${p.scale * 0.7})`,
+          }}
+        >
+          <div className="w-[80px] bg-white p-1.5 pb-5 shadow-[0_5px_20px_rgba(0,0,0,0.1)]">
+            <img
+              src={p.src}
+              alt=""
+              className="w-full aspect-square object-cover grayscale opacity-50"
+              loading="lazy"
+            />
+          </div>
+        </div>
+      ))}
 
+      {/* Content layer above polaroids */}
       <div className="relative z-10 max-w-5xl">
         <p
           ref={scriptRef}
