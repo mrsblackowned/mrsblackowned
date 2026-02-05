@@ -36,6 +36,7 @@ const Mission = () => {
       })
 
       linesRef.current.forEach((line, i) => {
+        if (!line) return
         gsap.from(line, {
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -61,20 +62,20 @@ const Mission = () => {
   ]
 
   return (
-    <section ref={sectionRef} className="py-40 md:py-56 px-6 bg-secondary">
+    <section ref={sectionRef} className="py-32 md:py-40 px-6 bg-black text-white">
       <div className="max-w-4xl mx-auto text-center">
         <p
           ref={labelRef}
-          className="uppercase tracking-[0.5em] text-xs text-black/40 mb-8"
+          className="font-body text-[11px] uppercase tracking-[0.3em] text-white/40 mb-6"
         >
           The Mission
         </p>
 
         <h2
           ref={headlineRef}
-          className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-black tracking-tight leading-[1.1] mb-16 md:mb-20"
+          className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-[1.1] mb-14 md:mb-16"
         >
-          Redirecting Beauty Dollars<br />With Intention.
+          Redirecting Beauty Dollars<br />With Intention
         </h2>
 
         <div className="space-y-6 md:space-y-8">
@@ -82,7 +83,7 @@ const Mission = () => {
             <p
               key={i}
               ref={(el) => (linesRef.current[i] = el)}
-              className="font-body text-lg md:text-xl lg:text-2xl text-black/70 leading-relaxed"
+              className="font-body text-base md:text-lg lg:text-xl text-white/60 leading-relaxed"
             >
               {line}
             </p>

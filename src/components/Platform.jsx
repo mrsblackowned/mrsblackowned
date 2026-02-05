@@ -28,23 +28,23 @@ const Platform = () => {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-32 md:py-40 px-6 bg-secondary">
+    <section ref={sectionRef} className="py-24 md:py-32 px-6 bg-white">
       <div ref={contentRef} className="max-w-3xl mx-auto text-center">
-        <p className="uppercase tracking-[0.5em] text-xs text-black/40 mb-6">
+        <p className="font-body text-[11px] uppercase tracking-[0.3em] text-black/40 mb-4">
           The Platform
         </p>
 
-        <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-black tracking-tight leading-[1.1] mb-8">
-          An Ongoing<br />Editorial Record.
+        <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-black tracking-tight leading-[1.1] mb-6">
+          An Ongoing<br />Editorial Record
         </h2>
 
-        <p className="font-body text-lg md:text-xl text-black/60 leading-relaxed mb-12">
-          A living editorial space for cultural commentary, industry insight, brand spotlights, and economic education—bridging beauty, history, and ownership in real time. Beyond trend cycles. Beyond surface-level coverage.
+        <p className="font-body text-sm md:text-base text-black/50 leading-relaxed mb-10">
+          A living editorial space for cultural commentary, industry insight, brand spotlights, and economic education — bridging beauty, history, and ownership in real time.
         </p>
 
         <a
           href="#"
-          className="inline-block border border-black/80 text-black text-sm uppercase tracking-[0.2em] px-10 py-4 hover:bg-black hover:text-white transition duration-300"
+          className="inline-block bg-black text-white text-xs uppercase tracking-[0.2em] px-10 py-4 hover:bg-accent hover:text-black transition-all duration-300 rounded-sm"
         >
           Enter the Editorial
         </a>

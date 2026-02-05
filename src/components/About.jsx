@@ -15,7 +15,6 @@ const About = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Image reveal
       gsap.from(imageRef.current, {
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -28,9 +27,9 @@ const About = () => {
         ease: 'power3.out',
       })
 
-      // Staggered text reveals
       const textElements = [headlineRef.current, bylineRef.current, bioRef.current, creditsRef.current]
       textElements.forEach((el, i) => {
+        if (!el) return
         gsap.from(el, {
           scrollTrigger: {
             trigger: sectionRef.current,
@@ -50,23 +49,23 @@ const About = () => {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-24 md:py-32 bg-secondary">
+    <section ref={sectionRef} id="about" className="py-24 md:py-32 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Editorial Portrait */}
           <div ref={imageRef} className="relative">
-            <div className="aspect-[3/4] bg-black/5 overflow-hidden">
-              {/* Abstract editorial placeholder - sophisticated gradient */}
-              <div className="w-full h-full bg-gradient-to-br from-black/10 via-black/5 to-transparent relative">
+            <div className="aspect-[3/4] bg-neutral-100 overflow-hidden">
+              <div className="w-full h-full bg-gradient-to-br from-neutral-200/80 via-neutral-100 to-transparent relative">
+                {/* Geometric accent */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 rounded-full border border-black/[0.04]" />
                 <div className="absolute inset-0 flex items-end justify-start p-8 md:p-12">
-                  <span className="text-black/20 text-[8rem] md:text-[12rem] font-serif leading-none select-none">
+                  <span className="text-black/10 text-[8rem] md:text-[12rem] font-serif leading-none select-none">
                     K
                   </span>
                 </div>
               </div>
             </div>
-            {/* Photo credit line */}
-            <p className="mt-4 text-xs tracking-[0.2em] text-black/30 uppercase">
+            <p className="mt-4 font-body text-[10px] tracking-[0.25em] text-black/30 uppercase">
               Editor & Author
             </p>
           </div>
@@ -82,33 +81,33 @@ const About = () => {
 
             <p
               ref={bylineRef}
-              className="mt-4 uppercase tracking-[0.35em] text-xs text-black/50"
+              className="mt-4 font-body text-[10px] uppercase tracking-[0.35em] text-black/40"
             >
               Beauty Editorial Writer · Brooklyn, NY
             </p>
 
             <div ref={bioRef} className="mt-10 space-y-5">
-              <p className="text-lg md:text-xl text-black/80 leading-relaxed">
+              <p className="font-body text-base md:text-lg text-black/70 leading-relaxed">
                 Kay Martin is a beauty editorial writer and author whose work centers
                 Black women, ownership, and self-expression.
               </p>
-              <p className="text-base text-black/60 leading-relaxed">
+              <p className="font-body text-sm text-black/50 leading-relaxed">
                 Through sharp cultural commentary and unflinching storytelling, she
                 documents what it means to own your narrative — in beauty, business,
-                and beyond. Her work has been described as "the intersection of
-                commerce and culture, told without compromise."
+                and beyond. Her work has been described as &ldquo;the intersection of
+                commerce and culture, told without compromise.&rdquo;
               </p>
-              <p className="text-base text-black/60 leading-relaxed">
-                This isn't sponsored content. This is a curated archive of the brands,
+              <p className="font-body text-sm text-black/50 leading-relaxed">
+                This isn&rsquo;t sponsored content. This is a curated archive of the brands,
                 founders, and stories shaping the future of beauty on their own terms.
               </p>
             </div>
 
             <div ref={creditsRef} className="mt-12 pt-8 border-t border-black/10">
-              <p className="uppercase tracking-[0.3em] text-[10px] text-black/40 mb-3">
+              <p className="font-body text-[10px] uppercase tracking-[0.3em] text-black/30 mb-3">
                 Selected Work
               </p>
-              <p className="text-sm text-black/50 leading-relaxed">
+              <p className="font-body text-sm text-black/40 leading-relaxed">
                 Essays on ownership, beauty culture, and the business of Black aesthetics.
                 Author of forthcoming works on editorial independence.
               </p>
