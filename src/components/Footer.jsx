@@ -21,40 +21,35 @@ const Footer = () => {
   }, [])
 
   return (
-    <footer ref={footerRef} className="py-20 px-6 bg-black text-white">
-      <div ref={contentRef} className="max-w-5xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-10">
-          <div className="text-center md:text-left">
-            <p className="font-serif text-xl tracking-tight">Mrs Black Owned</p>
-            <p className="font-body text-xs text-white/40 mt-2 tracking-[0.15em] uppercase">
-              The Archive of Ownership
-            </p>
-          </div>
+    <footer ref={footerRef} className="py-24 px-6 bg-black text-white">
+      <div ref={contentRef} className="max-w-4xl mx-auto text-center">
+        <p className="font-serif text-2xl tracking-tight mb-3">
+          Mrs Black Owned
+        </p>
+        <p className="font-body text-xs text-white/40 tracking-[0.2em] uppercase mb-12">
+          Editorial by Kay Martin
+        </p>
 
-          <nav className="flex gap-10">
-            <a
-              href="#"
-              className="font-body text-xs uppercase tracking-[0.15em] text-white/50 hover:text-white transition"
-            >
-              Instagram
-            </a>
-            <a
-              href="#"
-              className="font-body text-xs uppercase tracking-[0.15em] text-white/50 hover:text-white transition"
-            >
-              Twitter
-            </a>
-          </nav>
-        </div>
+        <nav className="flex justify-center gap-10 mb-16">
+          <a
+            href="#"
+            className="font-body text-xs uppercase tracking-[0.15em] text-white/40 hover:text-white transition"
+          >
+            Instagram
+          </a>
+          <a
+            href="#"
+            className="font-body text-xs uppercase tracking-[0.15em] text-white/40 hover:text-white transition"
+          >
+            Substack
+          </a>
+        </nav>
 
-        <div className="mt-16 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="font-body text-xs text-white/30">
-            &copy; {new Date().getFullYear()} Kay Martin. All rights reserved.
-          </p>
-          <p className="font-body text-xs text-white/20">
-            Built with intention.
-          </p>
-        </div>
+        <div className="w-12 h-px bg-white/10 mx-auto mb-8"></div>
+
+        <p className="font-body text-xs text-white/20">
+          &copy; {new Date().getFullYear()} Mrs Black Owned
+        </p>
       </div>
     </footer>
   )

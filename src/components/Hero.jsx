@@ -7,7 +7,6 @@ gsap.registerPlugin(ScrollTrigger)
 const Hero = () => {
   const headlineRef = useRef(null)
   const subRef = useRef(null)
-  const buttonRef = useRef(null)
   const overlayRef = useRef(null)
   const imageRef = useRef(null)
 
@@ -28,12 +27,6 @@ const Hero = () => {
       opacity: 0,
       duration: 1,
       delay: 0.6,
-    })
-    gsap.from(buttonRef.current, {
-      scale: 0.8,
-      opacity: 0,
-      duration: 1,
-      delay: 0.9,
     })
 
     // Parallax on background image
@@ -56,42 +49,34 @@ const Hero = () => {
         ref={imageRef}
         src="https://via.placeholder.com/1200x800"
         alt="Hero editorial"
-        className="absolute inset-0 w-full h-[120%] object-cover opacity-30"
+        className="absolute inset-0 w-full h-[120%] object-cover opacity-20"
       />
 
       {/* Gradient overlay */}
       <div
         ref={overlayRef}
-        className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/80 z-10"
+        className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70 z-10"
       ></div>
 
-      <div className="relative z-20 max-w-3xl">
-        <p className="uppercase tracking-[0.5em] text-xs text-[#DFDCD5]/50 mb-8">
-          The Editorial
-        </p>
-
+      <div className="relative z-20 max-w-4xl">
         <h1
           ref={headlineRef}
-          className="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-medium mb-8 tracking-tight leading-[0.95]"
+          className="font-serif text-4xl md:text-6xl lg:text-7xl text-white font-medium mb-10 tracking-tight leading-[1.05]"
         >
-          Own the<br />Narrative
+          A New Standard in<br />Beauty Documentation.
         </h1>
 
         <p
           ref={subRef}
-          className="font-body text-base md:text-lg text-[#DFDCD5]/70 mb-14 leading-relaxed max-w-md mx-auto"
+          className="font-body text-base md:text-lg text-[#DFDCD5]/70 leading-relaxed max-w-2xl mx-auto"
         >
-          Beauty, business, and Black aesthetics—<br className="hidden md:block" />
-          curated without compromise.
+          A curated, archival guide honoring Black and African-owned beauty and fragrance—where culture, craftsmanship, and ownership converge.
         </p>
+      </div>
 
-        <a
-          ref={buttonRef}
-          href="#book"
-          className="inline-block border border-[#DFDCD5]/60 text-[#DFDCD5] text-sm uppercase tracking-[0.25em] px-10 py-4 hover:bg-[#DFDCD5] hover:text-black transition duration-300"
-        >
-          Enter
-        </a>
+      {/* Scroll indicator */}
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-20">
+        <div className="w-px h-16 bg-gradient-to-b from-transparent via-[#DFDCD5]/30 to-[#DFDCD5]/50"></div>
       </div>
     </section>
   )

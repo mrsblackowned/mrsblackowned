@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Hero from './components/Hero'
-import About from './components/About'
 import BookSection from './components/BookSection'
-import FeaturedWork from './components/FeaturedWork'
-import FeaturedBrands from './components/FeaturedBrands'
-import Newsletter from './components/Newsletter'
+import Platform from './components/Platform'
+import Mission from './components/Mission'
+import Authority from './components/Authority'
+import Vision from './components/Vision'
+import About from './components/About'
 import Footer from './components/Footer'
 import Success from './components/Success'
 import PolaroidIntro from './components/PolaroidIntro'
@@ -57,11 +58,12 @@ function HomePage() {
 
       <div style={{ opacity: introComplete ? 1 : 0, transition: 'opacity 0.5s ease' }}>
         <Hero />
-        <About />
         <BookSection />
-        <FeaturedWork />
-        <FeaturedBrands />
-        <Newsletter />
+        <Platform />
+        <Mission />
+        <Authority />
+        <Vision />
+        <About />
         <Footer />
       </div>
     </>
