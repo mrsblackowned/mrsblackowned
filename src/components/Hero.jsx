@@ -66,31 +66,31 @@ const Hero = () => {
       ></div>
 
       <div className="relative z-20 max-w-3xl">
-        <p className="uppercase tracking-[0.4em] text-sm text-[#DFDCD5]/60 mb-6">
-          A Beauty Editorial
+        <p className="uppercase tracking-[0.5em] text-xs text-[#DFDCD5]/50 mb-8">
+          The Editorial
         </p>
 
         <h1
           ref={headlineRef}
-          className="font-body text-5xl md:text-7xl text-white font-bold mb-6 tracking-tight leading-tight"
+          className="font-serif text-5xl md:text-7xl lg:text-8xl text-white font-medium mb-8 tracking-tight leading-[0.95]"
         >
-          Beauty, Told<br />Without Permission
+          Own the<br />Narrative
         </h1>
 
         <p
           ref={subRef}
-          className="font-body text-lg md:text-xl text-[#DFDCD5]/80 mb-12 leading-relaxed max-w-xl mx-auto"
+          className="font-body text-base md:text-lg text-[#DFDCD5]/70 mb-14 leading-relaxed max-w-md mx-auto"
         >
-          An editorial for those who own their narrative.
-          Curated stories by Kay Martin.
+          Beauty, business, and Black aesthetics—<br className="hidden md:block" />
+          curated without compromise.
         </p>
 
         <a
           ref={buttonRef}
           href="#book"
-          className="inline-block border border-[#DFDCD5] text-[#DFDCD5] font-semibold px-10 py-4 tracking-wide hover:bg-[#DFDCD5] hover:text-black transition duration-300"
+          className="inline-block border border-[#DFDCD5]/60 text-[#DFDCD5] text-sm uppercase tracking-[0.25em] px-10 py-4 hover:bg-[#DFDCD5] hover:text-black transition duration-300"
         >
-          View the Issue
+          Enter
         </a>
       </div>
     </section>

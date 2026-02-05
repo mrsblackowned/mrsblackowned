@@ -16,33 +16,38 @@ const Success = () => {
   }, [])
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 bg-white">
-      <div ref={contentRef} className="text-center max-w-xl">
-        <p className="uppercase tracking-[0.4em] text-sm text-black/40 mb-6">
-          Welcome
+    <section className="min-h-screen flex items-center justify-center px-6 bg-secondary">
+      <div ref={contentRef} className="text-center max-w-lg">
+        <p className="uppercase tracking-[0.5em] text-xs text-black/40 mb-8">
+          Issue 01
         </p>
 
-        <h1 className="font-body text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">
-          You're In
+        <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-medium text-black mb-6 tracking-tight leading-[1.1]">
+          Welcome to<br />the Archive
         </h1>
 
-        <div className="w-16 h-px bg-black/20 mx-auto mb-6"></div>
+        <div className="w-12 h-px bg-black/20 mx-auto mb-8"></div>
 
-        <p className="font-body text-lg text-black/70 leading-relaxed mb-8">
-          Your digital edition of <em>The Black Beauty Experience</em> is ready.
-          Check your email for instant access to the issue.
+        <p className="font-body text-lg text-black/70 leading-relaxed mb-4">
+          Your digital edition is ready.
+        </p>
+        <p className="font-body text-base text-black/50 leading-relaxed mb-10">
+          Check your inbox for instant access to the full issue—<br className="hidden md:block" />
+          profiles, essays, and the complete archive.
         </p>
 
-        <p className="text-sm text-black/50 mb-10">
-          A confirmation has been sent to your inbox.
-        </p>
+        <div className="space-y-4">
+          <Link
+            to="/"
+            className="inline-block bg-black text-white text-sm uppercase tracking-[0.2em] px-10 py-4 hover:bg-black/80 transition duration-300"
+          >
+            Continue Exploring
+          </Link>
+        </div>
 
-        <Link
-          to="/"
-          className="inline-block border border-black text-black px-8 py-3 font-semibold tracking-wide hover:bg-black hover:text-white transition duration-300"
-        >
-          Return to Home
-        </Link>
+        <p className="mt-12 text-xs text-black/30 tracking-wide">
+          A confirmation has been sent to your email.
+        </p>
       </div>
     </section>
   )

@@ -62,16 +62,25 @@ const BookSection = () => {
 
           {/* Cover Headlines */}
           <div className="max-w-lg">
-            <h1 className="font-body text-5xl md:text-7xl font-bold leading-[0.95] tracking-tight mb-8">
-              Beauty,<br />
-              Ownership,<br />
-              Legacy
+            <h1 className="font-serif text-5xl md:text-7xl font-medium leading-[0.92] tracking-tight mb-10">
+              The Brands.<br />
+              The Founders.<br />
+              The Culture.
             </h1>
 
-            <ul className="space-y-3 text-[#DFDCD5]/70 text-base md:text-lg">
-              <li>• Inside the brands shaping culture</li>
-              <li>• Editorial stories by Kay Martin</li>
-              <li>• A modern beauty archive</li>
+            <ul className="space-y-3 text-[#DFDCD5]/60 text-sm md:text-base tracking-wide">
+              <li className="flex items-center gap-3">
+                <span className="w-4 h-px bg-[#DFDCD5]/40"></span>
+                Profiles in ownership
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-4 h-px bg-[#DFDCD5]/40"></span>
+                Essays on Black aesthetics
+              </li>
+              <li className="flex items-center gap-3">
+                <span className="w-4 h-px bg-[#DFDCD5]/40"></span>
+                An archive built to last
+              </li>
             </ul>
           </div>
 
@@ -80,9 +89,9 @@ const BookSection = () => {
             {/* Edition Badge */}
             <button
               onClick={handleCheckout}
-              className="border border-[#DFDCD5] px-6 py-3 uppercase tracking-[0.2em] text-xs md:text-sm text-[#DFDCD5] hover:bg-[#DFDCD5] hover:text-black transition duration-300"
+              className="border border-[#DFDCD5]/60 px-8 py-3 uppercase tracking-[0.2em] text-xs text-[#DFDCD5] hover:bg-[#DFDCD5] hover:text-black transition duration-300"
             >
-              Purchase Digital Edition
+              Get the Issue
             </button>
 
             {/* Price */}
