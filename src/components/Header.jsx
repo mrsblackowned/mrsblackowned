@@ -48,10 +48,8 @@ const Header = () => {
   return (
     <header
       ref={headerRef}
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
-        scrolled
-          ? 'bg-white/95 backdrop-blur-sm shadow-[0_1px_0_rgba(0,0,0,0.06)] py-4'
-          : 'bg-transparent py-6'
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 bg-black ${
+        scrolled ? 'py-3' : 'py-5'
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex justify-between items-center">
@@ -62,9 +60,9 @@ const Header = () => {
             className="md:hidden flex flex-col gap-1.5 w-6"
             aria-label="Toggle menu"
           >
-            <span className={`block h-px bg-black transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-[3.5px]' : ''}`} />
-            <span className={`block h-px bg-black transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
-            <span className={`block h-px bg-black transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-[3.5px]' : ''}`} />
+            <span className={`block h-px bg-white transition-all duration-300 ${mobileOpen ? 'rotate-45 translate-y-[3.5px]' : ''}`} />
+            <span className={`block h-px bg-white transition-all duration-300 ${mobileOpen ? 'opacity-0' : ''}`} />
+            <span className={`block h-px bg-white transition-all duration-300 ${mobileOpen ? '-rotate-45 -translate-y-[3.5px]' : ''}`} />
           </button>
 
           <nav className="hidden md:flex items-center gap-8">
@@ -72,7 +70,7 @@ const Header = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className="font-body text-[11px] uppercase tracking-[0.2em] text-black/60 hover:text-black transition-colors duration-300"
+                className="font-body text-[11px] uppercase tracking-[0.2em] text-white/60 hover:text-white transition-colors duration-300"
               >
                 {link.label}
               </a>
@@ -99,19 +97,19 @@ const Header = () => {
             />
           </button>
 
-          <button aria-label="Wishlist" className="hidden sm:block text-black/60 hover:text-black transition-colors">
+          <button aria-label="Wishlist" className="hidden sm:block text-white/60 hover:text-white transition-colors">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
             </svg>
           </button>
 
-          <button aria-label="Cart" className="text-black/60 hover:text-black transition-colors relative">
+          <button aria-label="Cart" className="text-white/60 hover:text-white transition-colors relative">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
               <line x1="3" y1="6" x2="21" y2="6" />
               <path d="M16 10a4 4 0 0 1-8 0" />
             </svg>
-            <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-accent text-[9px] font-semibold text-black rounded-full flex items-center justify-center">
+            <span className="absolute -top-1.5 -right-1.5 w-4 h-4 bg-accent text-[9px] font-semibold text-white rounded-full flex items-center justify-center">
               0
             </span>
           </button>
@@ -122,7 +120,7 @@ const Header = () => {
       {mobileOpen && (
         <div
           ref={mobileMenuRef}
-          className="md:hidden fixed inset-0 top-[60px] bg-white z-50"
+          className="md:hidden fixed inset-0 top-[60px] bg-black z-50"
         >
           <nav className="flex flex-col items-center justify-center h-full gap-8">
             {navLinks.map((link) => (
@@ -130,7 +128,7 @@ const Header = () => {
                 key={link.label}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
-                className="font-serif text-3xl text-black hover:text-accent transition-colors duration-300"
+                className="font-serif text-3xl text-white hover:text-accent transition-colors duration-300"
               >
                 {link.label}
               </a>
