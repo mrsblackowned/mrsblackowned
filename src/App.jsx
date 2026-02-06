@@ -2,8 +2,6 @@ import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import PolaroidIntro from './components/PolaroidIntro'
 import Hero from './components/Hero'
-import ProductShowcase from './components/ProductShowcase'
-import EditorialCollage from './components/EditorialCollage'
 import WhatsIncluded from './components/WhatsIncluded'
 import BookSection from './components/BookSection'
 import BookFunnel from './components/BookFunnel'
@@ -28,8 +26,6 @@ function HomePage() {
       <PolaroidIntro />
       <Hero />
       <BookFunnel />
-      <ProductShowcase />
-      <EditorialCollage />
       <WhatsIncluded />
       <BookSection />
       <ThemeFeatures />
