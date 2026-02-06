@@ -1,7 +1,6 @@
-import { useState, useEffect } from 'react'
 import { Routes, Route } from 'react-router-dom'
-import AnnouncementBar from './components/AnnouncementBar'
 import Header from './components/Header'
+import PolaroidIntro from './components/PolaroidIntro'
 import Hero from './components/Hero'
 import ProductShowcase from './components/ProductShowcase'
 import EditorialCollage from './components/EditorialCollage'
@@ -20,65 +19,29 @@ import FeaturedWork from './components/FeaturedWork'
 import Newsletter from './components/Newsletter'
 import Footer from './components/Footer'
 import Success from './components/Success'
-import PolaroidIntro from './components/PolaroidIntro'
-
-const INTRO_STORAGE_KEY = 'mrsblackowned_intro_seen'
 
 function HomePage() {
-  const [showIntro, setShowIntro] = useState(false)
-  const [introComplete, setIntroComplete] = useState(true)
-
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReducedMotion) {
-      localStorage.setItem(INTRO_STORAGE_KEY, 'true')
-      return
-    }
-
-    const hasSeenIntro = localStorage.getItem(INTRO_STORAGE_KEY)
-
-    if (!hasSeenIntro) {
-      setShowIntro(true)
-      setIntroComplete(false)
-      document.body.style.overflow = 'hidden'
-    }
-  }, [])
-
-  const handleIntroComplete = () => {
-    document.body.style.overflow = ''
-    localStorage.setItem(INTRO_STORAGE_KEY, 'true')
-    setIntroComplete(true)
-    setTimeout(() => {
-      setShowIntro(false)
-    }, 100)
-  }
-
   return (
     <>
-      {showIntro && (
-        <PolaroidIntro onComplete={handleIntroComplete} />
-      )}
-
-      <div style={{ opacity: introComplete ? 1 : 0, transition: 'opacity 0.5s ease' }}>
-        <Header />
-        <Hero />
-        <ProductShowcase />
-        <EditorialCollage />
-        <WhatsIncluded />
-        <BookSection />
-        <ThemeFeatures />
-        <Platform />
-        <Mission />
-        <Testimonials />
-        <CTABlock />
-        <About />
-        <FeaturedBrands />
-        <Authority />
-        <Vision />
-        <FeaturedWork />
-        <Newsletter />
-        <Footer />
-      </div>
+      <Header />
+      <PolaroidIntro />
+      <Hero />
+      <ProductShowcase />
+      <EditorialCollage />
+      <WhatsIncluded />
+      <BookSection />
+      <ThemeFeatures />
+      <Platform />
+      <Mission />
+      <Testimonials />
+      <CTABlock />
+      <About />
+      <FeaturedBrands />
+      <Authority />
+      <Vision />
+      <FeaturedWork />
+      <Newsletter />
+      <Footer />
     </>
   )
 }
