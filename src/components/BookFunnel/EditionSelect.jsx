@@ -72,7 +72,7 @@ const EditionSelect = () => {
             Choose Your Edition
           </h2>
           <p className="font-body text-sm text-black/40 leading-relaxed max-w-lg mx-auto">
-            Two ways to experience the book. One story.
+            Two ways to own <span className="italic">All The Black-Owned, Babee!</span> — one story.
           </p>
         </div>
 
