@@ -52,9 +52,12 @@ const EditionSelect = () => {
       const data = await res.json()
       if (data.url) {
         window.location.href = data.url
+      } else {
+        alert('Something went wrong. Please try again.')
       }
     } catch (err) {
       console.error('Checkout error:', err)
+      alert('Unable to connect to checkout. Please try again.')
     }
   }
 

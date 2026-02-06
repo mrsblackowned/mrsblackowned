@@ -67,7 +67,7 @@ const Header = () => {
 
         {/* Right: Buy the Book CTA */}
         <a
-          href="#book"
+          href="#choose-edition"
           className="font-body text-[10px] md:text-xs uppercase tracking-[0.2em] text-black bg-accent hover:bg-accent-dark px-4 py-2 md:px-6 md:py-2.5 transition-colors duration-300"
         >
           Buy the Book
