@@ -42,10 +42,12 @@ const EditionSelect = () => {
     return () => ctx.revert()
   }, [])
 
-  const handleEbookCheckout = async () => {
+  const handleCheckout = async (edition) => {
     try {
       const res = await fetch('/api/create-checkout-session', {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ edition }),
       })
       const data = await res.json()
       if (data.url) {
@@ -98,7 +100,7 @@ const EditionSelect = () => {
             </p>
 
             <button
-              onClick={handleEbookCheckout}
+              onClick={() => handleCheckout('ebook')}
               className="w-full bg-black text-white font-body text-xs uppercase tracking-[0.2em] px-8 py-4 hover:bg-accent hover:text-black transition-all duration-300 rounded-sm cursor-pointer"
             >
               Claim Your Copy
@@ -130,7 +132,10 @@ const EditionSelect = () => {
               Ships when ready
             </p>
 
-            <button className="w-full border border-black text-black font-body text-xs uppercase tracking-[0.2em] px-8 py-4 hover:bg-black hover:text-white transition-all duration-300 rounded-sm cursor-pointer">
+            <button
+              onClick={() => handleCheckout('coffee-table')}
+              className="w-full border border-black text-black font-body text-xs uppercase tracking-[0.2em] px-8 py-4 hover:bg-black hover:text-white transition-all duration-300 rounded-sm cursor-pointer"
+            >
               Reserve Your Copy
             </button>
           </div>
