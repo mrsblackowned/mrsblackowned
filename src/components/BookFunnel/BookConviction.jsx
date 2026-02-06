@@ -98,7 +98,7 @@ const BookConviction = () => {
         {/* Actual book cover image */}
         <div ref={coverRef} className="relative max-w-2xl mx-auto mb-20 md:mb-28">
           <img
-            src="/book-cover.jpg"
+            src="/Book/book-cover.png"
             alt="All The Black-Owned, Babee! — 2026 Edition — Beauty by Mrs. Black Owned"
             className="w-full shadow-[0_25px_80px_rgba(0,0,0,0.3)]"
           />
