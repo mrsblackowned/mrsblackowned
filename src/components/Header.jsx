@@ -1,12 +1,12 @@
 const Header = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black py-4 md:py-5">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black py-5 md:py-6">
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
         {/* Social Icons — subtle, secondary */}
         <div className="flex items-center gap-4">
           {/* Facebook */}
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/share/1GGCCZb8sG/?mibextid=wwXIfr"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
@@ -18,7 +18,7 @@ const Header = () => {
           </a>
           {/* Instagram */}
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/beautybymrsblackowned?igsh=cjV5bXMzeXUwYzM0&utm_source=qr"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
@@ -32,7 +32,7 @@ const Header = () => {
           </a>
           {/* Substack */}
           <a
-            href="https://substack.com"
+            href="https://substack.com/@beautybymrsblackowned?r=5p14u6&utm_medium=ios&utm_source=profile&shareImageVariant=blur"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Substack"
@@ -44,7 +44,7 @@ const Header = () => {
           </a>
           {/* TikTok */}
           <a
-            href="https://tiktok.com"
+            href="https://www.tiktok.com/@beautybymrsblackowned?_r=1&_t=ZP-93hRBUSI5kt"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="TikTok"
@@ -61,7 +61,7 @@ const Header = () => {
           <img
             src="/Logos/BBMainLogoTransparent.png"
             alt="Beauty By Mrs. Black Owned"
-            className="h-14 md:h-20 w-auto"
+            className="h-20 md:h-28 w-auto"
           />
         </a>
 
