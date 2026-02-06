@@ -48,7 +48,7 @@ const Header = () => {
   return (
     <header
       ref={headerRef}
-      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 bg-black ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-black ${
         scrolled ? 'py-3' : 'py-5'
       }`}
     >
@@ -70,7 +70,7 @@ const Header = () => {
               <a
                 key={link.label}
                 href={link.href}
-                className="font-body text-[11px] uppercase tracking-[0.2em] text-white/60 hover:text-white transition-colors duration-300"
+                className="font-body text-[11px] uppercase tracking-[0.2em] text-white/80 hover:text-white transition-colors duration-300"
               >
                 {link.label}
               </a>
@@ -83,7 +83,7 @@ const Header = () => {
           <img
             src="/Logos/BBMainLogoTransparent.png"
             alt="Beauty By Mrs. Black Owned"
-            className="h-10 md:h-14 w-auto"
+            className="h-12 md:h-20 w-auto"
           />
         </a>
 
@@ -93,17 +93,17 @@ const Header = () => {
             <img
               src="/Logos/BBIconTransparent.png"
               alt="Search"
-              className="h-5 w-5 object-contain"
+              className="h-6 w-6 object-contain"
             />
           </button>
 
-          <button aria-label="Wishlist" className="hidden sm:block text-white/60 hover:text-white transition-colors">
+          <button aria-label="Wishlist" className="hidden sm:block text-white/80 hover:text-white transition-colors">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
             </svg>
           </button>
 
-          <button aria-label="Cart" className="text-white/60 hover:text-white transition-colors relative">
+          <button aria-label="Cart" className="text-white/80 hover:text-white transition-colors relative">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
               <line x1="3" y1="6" x2="21" y2="6" />
