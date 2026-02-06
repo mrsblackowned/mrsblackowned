@@ -7,9 +7,47 @@ gsap.registerPlugin(ScrollTrigger)
 
 const features = [
   '85 pages of curated celebration of Black-owned beauty.',
-  'A comprehensive guide to independent Black-owned brands and rituals.',
+  'A complete guide to independent Black-owned brands and rituals.',
   'A visual journey through Black beauty — from fragrance and hair to ritual and craftsmanship.',
 ]
+
+/* Photos for the film strip rows on the cover */
+const filmStripImages = [
+  '/polaroids/0.jpeg',
+  '/polaroids/1.jpeg',
+  '/polaroids/2.jpeg',
+  '/polaroids/3.jpeg',
+]
+
+const FilmStrip = ({ images, className = '' }) => (
+  <div className={`relative ${className}`}>
+    {/* Sprocket holes */}
+    <div className="absolute inset-x-0 top-0 h-[10px] md:h-[14px] bg-black flex items-center justify-around px-2">
+      {Array.from({ length: 20 }).map((_, i) => (
+        <div key={i} className="w-[6px] h-[4px] md:w-[8px] md:h-[5px] bg-white/90 rounded-[1px]" />
+      ))}
+    </div>
+    {/* Photo row */}
+    <div className="grid grid-cols-4 gap-0 bg-black pt-[10px] pb-[10px] md:pt-[14px] md:pb-[14px]">
+      {images.map((src, i) => (
+        <div key={i} className="aspect-square overflow-hidden">
+          <img
+            src={src}
+            alt=""
+            className="w-full h-full object-cover grayscale"
+            loading="lazy"
+          />
+        </div>
+      ))}
+    </div>
+    {/* Bottom sprocket holes */}
+    <div className="absolute inset-x-0 bottom-0 h-[10px] md:h-[14px] bg-black flex items-center justify-around px-2">
+      {Array.from({ length: 20 }).map((_, i) => (
+        <div key={i} className="w-[6px] h-[4px] md:w-[8px] md:h-[5px] bg-white/90 rounded-[1px]" />
+      ))}
+    </div>
+  </div>
+)
 
 const BookConviction = () => {
   const sectionRef = useRef(null)
@@ -82,73 +120,66 @@ const BookConviction = () => {
         {/* Editorial heading */}
         <div ref={headingRef} className="text-center mb-16 md:mb-24">
           <p className="font-body text-[10px] uppercase tracking-[0.4em] text-black/30 mb-6">
-            Issue 01
+            2026 Edition
           </p>
           <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl font-medium text-black tracking-tight leading-[1.05] mb-6">
-            The Brands. The Founders.
+            All The Black-Owned,
             <br />
-            The Culture.
+            Babee!
           </h2>
           <p className="font-body text-sm text-black/45 leading-relaxed max-w-2xl mx-auto">
-            A definitive beauty and fragrance guide centering Black and
-            African-owned brands — documenting excellence, economic impact, and
-            cultural legacy.
+            A complete guide to Black-owned beauty and fragrance — celebrating
+            the brands, the founders, and the culture redefining the industry.
           </p>
         </div>
 
-        {/* Book cover displayed as object of value — not a product card */}
+        {/* Book cover — film strip aesthetic matching the actual cover */}
         <div ref={coverRef} className="relative max-w-2xl mx-auto mb-20 md:mb-28">
-          <div className="relative bg-black text-white aspect-[3/4] shadow-[0_25px_80px_rgba(0,0,0,0.3)] overflow-hidden">
-            {/* Geometric accent */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full border border-white/[0.04]" />
+          <div className="relative bg-black shadow-[0_25px_80px_rgba(0,0,0,0.3)] overflow-hidden">
+            {/* Top film strip row */}
+            <FilmStrip images={filmStripImages} />
 
-            <div className="absolute inset-0 flex flex-col justify-between p-8 md:p-14">
-              <div>
-                <p className="font-body text-[10px] uppercase tracking-[0.4em] text-white/40">
-                  Mrs Black Owned
-                </p>
-                <div className="w-10 h-px bg-accent/50 mt-3" />
-              </div>
-
-              <div className="max-w-md">
-                <h3 className="font-serif text-4xl md:text-6xl font-medium leading-[0.95] tracking-tight mb-8">
-                  The Brands.
-                  <br />
-                  The Founders.
-                  <br />
-                  The Culture.
-                </h3>
-
-                <ul className="space-y-2 text-white/40 text-sm tracking-wide">
-                  <li className="flex items-center gap-3">
-                    <span className="w-3 h-px bg-accent/60" />
-                    Profiles in ownership
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-3 h-px bg-accent/60" />
-                    Essays on Black aesthetics
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <span className="w-3 h-px bg-accent/60" />
-                    An archive built to last
-                  </li>
-                </ul>
-              </div>
-
-              <div className="flex justify-between items-end">
-                <p className="font-body text-[10px] uppercase tracking-[0.3em] text-white/25">
-                  Digital & Print Editions
-                </p>
-                <div className="text-right">
-                  <p className="text-[10px] uppercase tracking-widest text-white/20">
-                    Issue
-                  </p>
-                  <p className="text-xl md:text-2xl font-semibold text-accent/40">
-                    01
-                  </p>
-                </div>
-              </div>
+            {/* Marquee band — top */}
+            <div className="bg-[#E8E0D0] py-1.5 overflow-hidden">
+              <p className="font-body text-[9px] md:text-[11px] uppercase tracking-[0.3em] text-black/60 whitespace-nowrap text-center">
+                A Complete Guide To &nbsp;&middot;&nbsp; A Complete Guide To &nbsp;&middot;&nbsp; A Complete Guide To &nbsp;&middot;&nbsp; A Complete Guide To
+              </p>
             </div>
+
+            {/* Central title area */}
+            <div className="bg-neutral-800 py-12 md:py-20 px-6 md:px-12 text-center">
+              <h3
+                className="font-serif text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.05] mb-4 uppercase"
+                style={{ fontVariant: 'small-caps' }}
+              >
+                All The Black-
+                <br />
+                Owned, Babee!
+              </h3>
+
+              <p className="font-body text-xs md:text-sm uppercase tracking-[0.3em] text-accent mb-8">
+                2026 Edition
+              </p>
+
+              <p className="font-serif text-xl md:text-3xl lg:text-4xl tracking-[0.15em] text-white/80 mb-2 uppercase">
+                Beauty By
+              </p>
+              <p className="font-body text-sm md:text-base uppercase tracking-[0.25em] text-accent/80">
+                Mrs. Black Owned
+              </p>
+            </div>
+
+            {/* Marquee band — bottom */}
+            <div className="bg-[#E8E0D0] py-1.5 overflow-hidden">
+              <p className="font-body text-[9px] md:text-[11px] uppercase tracking-[0.3em] text-black/60 whitespace-nowrap text-center">
+                A Complete Guide To &nbsp;&middot;&nbsp; A Complete Guide To &nbsp;&middot;&nbsp; A Complete Guide To &nbsp;&middot;&nbsp; A Complete Guide To
+              </p>
+            </div>
+
+            {/* Bottom film strip row */}
+            <FilmStrip
+              images={[...filmStripImages].reverse()}
+            />
           </div>
         </div>
 

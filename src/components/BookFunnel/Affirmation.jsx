@@ -48,9 +48,10 @@ const Affirmation = () => {
         <div className="w-12 h-px bg-accent/40 mx-auto mb-8" />
 
         <p className="font-body text-sm text-white/40 leading-relaxed max-w-xl mx-auto mb-12">
-          This isn't a purchase. It's participation. Every copy supports the
-          documentation, celebration, and economic empowerment of Black-owned
-          beauty — now and for generations to come.
+          This isn't a purchase. It's participation. Every copy of
+          <span className="italic text-white/50"> All The Black-Owned, Babee! </span>
+          supports the documentation, celebration, and economic empowerment of
+          Black-owned beauty — now and for generations to come.
         </p>
 
         {/* Final soft CTA — subtle text link back to edition selection */}
