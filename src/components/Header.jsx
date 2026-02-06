@@ -6,7 +6,7 @@ const Header = () => {
         <div className="flex items-center gap-4">
           {/* Facebook */}
           <a
-            href="https://facebook.com"
+            href="https://www.facebook.com/share/1GGCCZb8sG/?mibextid=wwXIfr"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
@@ -18,7 +18,7 @@ const Header = () => {
           </a>
           {/* Instagram */}
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/beautybymrsblackowned?igsh=cjV5bXMzeXUwYzM0&utm_source=qr"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
@@ -32,7 +32,7 @@ const Header = () => {
           </a>
           {/* Substack */}
           <a
-            href="https://substack.com"
+            href="https://substack.com/@beautybymrsblackowned?r=5p14u6&utm_medium=ios&utm_source=profile&shareImageVariant=blur"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Substack"
@@ -44,7 +44,7 @@ const Header = () => {
           </a>
           {/* TikTok */}
           <a
-            href="https://tiktok.com"
+            href="https://www.tiktok.com/@beautybymrsblackowned?_r=1&_t=ZP-93hRBUSI5kt"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="TikTok"

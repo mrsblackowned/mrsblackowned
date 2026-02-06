@@ -47,21 +47,26 @@ const Footer = () => {
               Where culture, craftsmanship, and ownership converge.
             </p>
             <div className="flex gap-4">
-              <a href="#" aria-label="Instagram" className="text-white/30 hover:text-accent transition-colors">
+              <a href="https://www.facebook.com/share/1GGCCZb8sG/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-white/30 hover:text-accent transition-colors">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" />
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/beautybymrsblackowned?igsh=cjV5bXMzeXUwYzM0&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-white/30 hover:text-accent transition-colors">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <rect x="2" y="2" width="20" height="20" rx="5" />
                   <circle cx="12" cy="12" r="5" />
                   <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none" />
                 </svg>
               </a>
-              <a href="#" aria-label="Twitter" className="text-white/30 hover:text-accent transition-colors">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                </svg>
-              </a>
-              <a href="#" aria-label="Substack" className="text-white/30 hover:text-accent transition-colors">
+              <a href="https://substack.com/@beautybymrsblackowned?r=5p14u6&utm_medium=ios&utm_source=profile&shareImageVariant=blur" target="_blank" rel="noopener noreferrer" aria-label="Substack" className="text-white/30 hover:text-accent transition-colors">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z" />
+                </svg>
+              </a>
+              <a href="https://www.tiktok.com/@beautybymrsblackowned?_r=1&_t=ZP-93hRBUSI5kt" target="_blank" rel="noopener noreferrer" aria-label="TikTok" className="text-white/30 hover:text-accent transition-colors">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.7a8.18 8.18 0 0 0 4.76 1.52v-3.4a4.85 4.85 0 0 1-1-.13z" />
                 </svg>
               </a>
             </div>
