@@ -11,44 +11,6 @@ const features = [
   'A visual journey through Black beauty — from fragrance and hair to ritual and craftsmanship.',
 ]
 
-/* Photos for the film strip rows on the cover */
-const filmStripImages = [
-  '/polaroids/0.jpeg',
-  '/polaroids/1.jpeg',
-  '/polaroids/2.jpeg',
-  '/polaroids/3.jpeg',
-]
-
-const FilmStrip = ({ images, className = '' }) => (
-  <div className={`relative ${className}`}>
-    {/* Sprocket holes */}
-    <div className="absolute inset-x-0 top-0 h-[10px] md:h-[14px] bg-black flex items-center justify-around px-2">
-      {Array.from({ length: 20 }).map((_, i) => (
-        <div key={i} className="w-[6px] h-[4px] md:w-[8px] md:h-[5px] bg-white/90 rounded-[1px]" />
-      ))}
-    </div>
-    {/* Photo row */}
-    <div className="grid grid-cols-4 gap-0 bg-black pt-[10px] pb-[10px] md:pt-[14px] md:pb-[14px]">
-      {images.map((src, i) => (
-        <div key={i} className="aspect-square overflow-hidden">
-          <img
-            src={src}
-            alt=""
-            className="w-full h-full object-cover grayscale"
-            loading="lazy"
-          />
-        </div>
-      ))}
-    </div>
-    {/* Bottom sprocket holes */}
-    <div className="absolute inset-x-0 bottom-0 h-[10px] md:h-[14px] bg-black flex items-center justify-around px-2">
-      {Array.from({ length: 20 }).map((_, i) => (
-        <div key={i} className="w-[6px] h-[4px] md:w-[8px] md:h-[5px] bg-white/90 rounded-[1px]" />
-      ))}
-    </div>
-  </div>
-)
-
 const BookConviction = () => {
   const sectionRef = useRef(null)
   const headingRef = useRef(null)
@@ -133,54 +95,13 @@ const BookConviction = () => {
           </p>
         </div>
 
-        {/* Book cover — film strip aesthetic matching the actual cover */}
+        {/* Actual book cover image */}
         <div ref={coverRef} className="relative max-w-2xl mx-auto mb-20 md:mb-28">
-          <div className="relative bg-black shadow-[0_25px_80px_rgba(0,0,0,0.3)] overflow-hidden">
-            {/* Top film strip row */}
-            <FilmStrip images={filmStripImages} />
-
-            {/* Marquee band — top */}
-            <div className="bg-[#E8E0D0] py-1.5 overflow-hidden">
-              <p className="font-body text-[9px] md:text-[11px] uppercase tracking-[0.3em] text-black/60 whitespace-nowrap text-center">
-                A Complete Guide To &nbsp;&middot;&nbsp; A Complete Guide To &nbsp;&middot;&nbsp; A Complete Guide To &nbsp;&middot;&nbsp; A Complete Guide To
-              </p>
-            </div>
-
-            {/* Central title area */}
-            <div className="bg-neutral-800 py-12 md:py-20 px-6 md:px-12 text-center">
-              <h3
-                className="font-serif text-3xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.05] mb-4 uppercase"
-                style={{ fontVariant: 'small-caps' }}
-              >
-                All The Black-
-                <br />
-                Owned, Babee!
-              </h3>
-
-              <p className="font-body text-xs md:text-sm uppercase tracking-[0.3em] text-accent mb-8">
-                2026 Edition
-              </p>
-
-              <p className="font-serif text-xl md:text-3xl lg:text-4xl tracking-[0.15em] text-white/80 mb-2 uppercase">
-                Beauty By
-              </p>
-              <p className="font-body text-sm md:text-base uppercase tracking-[0.25em] text-accent/80">
-                Mrs. Black Owned
-              </p>
-            </div>
-
-            {/* Marquee band — bottom */}
-            <div className="bg-[#E8E0D0] py-1.5 overflow-hidden">
-              <p className="font-body text-[9px] md:text-[11px] uppercase tracking-[0.3em] text-black/60 whitespace-nowrap text-center">
-                A Complete Guide To &nbsp;&middot;&nbsp; A Complete Guide To &nbsp;&middot;&nbsp; A Complete Guide To &nbsp;&middot;&nbsp; A Complete Guide To
-              </p>
-            </div>
-
-            {/* Bottom film strip row */}
-            <FilmStrip
-              images={[...filmStripImages].reverse()}
-            />
-          </div>
+          <img
+            src="/book-cover.jpg"
+            alt="All The Black-Owned, Babee! — 2026 Edition — Beauty by Mrs. Black Owned"
+            className="w-full shadow-[0_25px_80px_rgba(0,0,0,0.3)]"
+          />
         </div>
 
         {/* Feature statements */}
