@@ -82,8 +82,8 @@ const Header = () => {
         <a href="/" className="absolute left-1/2 -translate-x-1/2">
           <img
             src="/Logos/BBMainLogoTransparent.png"
-            alt="Mrs Black Owned"
-            className="h-14 md:h-16 w-auto max-w-[200px] md:max-w-[260px]"
+            alt="Beauty By Mrs. Black Owned"
+            className="h-10 md:h-14 w-auto"
           />
         </a>
 

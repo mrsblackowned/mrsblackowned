@@ -1,125 +1,91 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 
-const letters = ['M', 'R', 'S', 'B', 'L', 'A', 'C', 'K', 'O', 'W', 'N', 'E', 'D']
+const polaroidData = [
+  { name: 'Brenda',  image: '/polaroids/0.jpeg' },
+  { name: 'LaTisha', image: '/polaroids/1.jpeg' },
+  { name: 'Linda',   image: '/polaroids/2.jpeg' },
+  { name: 'Felicia', image: '/polaroids/3.jpeg' },
+  { name: 'Dawn',    image: '/polaroids/4.jpeg' },
+  { name: 'LeShaun', image: '/polaroids/5.jpeg' },
+  { name: 'Ines',    image: '/polaroids/6.jpeg' },
+  { name: 'Alicia',  image: '/polaroids/7.jpeg' },
+  { name: 'Theresa', image: '/polaroids/8.jpeg' },
+  { name: 'Monica',  image: '/polaroids/9.jpeg' },
+  { name: 'Sharron', image: '/polaroids/10.jpeg' },
+]
 
-const getImageSrc = (i) => {
-  if (i <= 10) return `/polaroids/${i}.jpeg`
-  return `/polaroids/${i}.svg`
-}
+// Scattered positions for a natural "thrown on table" layout
+// Framing the page — left, center, and right clusters
+const positions = [
+  { left: '3%',  top: '6%',  rot: -6 },
+  { left: '16%', top: '42%', rot: 4 },
+  { left: '4%',  top: '70%', rot: -3 },
+  { left: '30%', top: '14%', rot: 5 },
+  { left: '36%', top: '56%', rot: -2 },
+  { left: '46%', top: '3%',  rot: 3 },
+  { left: '52%', top: '68%', rot: -4 },
+  { left: '62%', top: '28%', rot: 6 },
+  { left: '73%', top: '62%', rot: -5 },
+  { left: '80%', top: '8%',  rot: 3 },
+  { left: '86%', top: '42%', rot: -4 },
+]
 
-const getFinalPositions = () => {
-  const isMobile = window.innerWidth < 768
-  const spacing = isMobile ? 55 : 75
-  const startX = -(letters.length - 1) * spacing / 2
-
-  return letters.map((_, i) => ({
-    x: startX + i * spacing,
-    y: 0,
-  }))
-}
-
-const PolaroidIntro = ({ onComplete }) => {
-  const containerRef = useRef(null)
+const PolaroidIntro = () => {
+  const sectionRef = useRef(null)
   const polaroidsRef = useRef([])
-  const mastheadRef = useRef(null)
 
   useEffect(() => {
-    const tl = gsap.timeline({
-      onComplete: () => {
-        setTimeout(() => onComplete?.(), 300)
-      },
+    const els = polaroidsRef.current.filter(Boolean)
+
+    // Set initial state — hidden above viewport
+    gsap.set(els, { y: -1000, opacity: 0 })
+
+    // Drop sequence — one by one, gravity-led
+    const tl = gsap.timeline()
+
+    els.forEach((el, i) => {
+      tl.to(
+        el,
+        {
+          y: 0,
+          opacity: 1,
+          rotation: positions[i].rot + gsap.utils.random(-2, 2),
+          duration: 0.9,
+          ease: 'power3.out',
+        },
+        i * 0.7
+      )
     })
 
-    const finalPositions = getFinalPositions()
-
-    tl.from(polaroidsRef.current, {
-      y: -800,
-      rotation: () => gsap.utils.random(-30, 30),
-      x: () => gsap.utils.random(-300, 300),
-      opacity: 0,
-      stagger: 0.08,
-      duration: 1.2,
-      ease: 'power4.out',
-    })
-
-    tl.to({}, { duration: 0.6 })
-
-    tl.to(polaroidsRef.current, {
-      duration: 1.2,
-      rotation: 0,
-      scale: 0.85,
-      x: (i) => finalPositions[i].x,
-      y: (i) => finalPositions[i].y,
-      ease: 'power3.inOut',
-      stagger: 0.04,
-    })
-
-    tl.to(
-      polaroidsRef.current,
-      {
-        opacity: 0.12,
-        scale: 0.8,
-        duration: 0.8,
-        ease: 'power2.out',
-      },
-      '-=0.2'
-    )
-
-    tl.fromTo(
-      mastheadRef.current,
-      { opacity: 0, y: 20 },
-      { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-      '-=0.4'
-    )
-
-    tl.to({}, { duration: 1.2 })
-
-    tl.to(containerRef.current, {
-      opacity: 0,
-      duration: 0.6,
-      ease: 'power2.inOut',
-    })
-
-    return () => {
-      tl.kill()
-    }
-  }, [onComplete])
+    return () => tl.kill()
+  }, [])
 
   return (
     <section
-      ref={containerRef}
-      className="fixed inset-0 z-50 flex items-center justify-center bg-white overflow-hidden"
-      style={{ pointerEvents: 'none' }}
+      ref={sectionRef}
+      className="relative w-full bg-white overflow-hidden"
+      style={{ height: '100vh', paddingTop: '80px' }}
     >
-      <div className="absolute inset-0 flex items-center justify-center">
-        {letters.map((letter, i) => (
-          <div
-            key={i}
-            ref={(el) => (polaroidsRef.current[i] = el)}
-            className="polaroid absolute"
-            data-letter={letter}
-          >
+      {polaroidData.map((polaroid, i) => (
+        <div
+          key={i}
+          ref={(el) => (polaroidsRef.current[i] = el)}
+          className="polaroid absolute"
+          style={{
+            left: positions[i].left,
+            top: positions[i].top,
+          }}
+        >
+          <div className="polaroid-img-wrap">
             <img
-              src={getImageSrc(i)}
-              alt=""
-              className="w-full h-full object-cover"
+              src={polaroid.image}
+              alt={polaroid.name}
             />
           </div>
-        ))}
-      </div>
-
-      <div
-        ref={mastheadRef}
-        className="relative z-10 text-center opacity-0"
-      >
-        <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-medium text-black tracking-tight">
-          MRS BLACK OWNED
-        </h1>
-        <p className="mt-4 font-script text-xl md:text-2xl text-accent">
-          timeless elegance
-        </p>
-      </div>
+          <p className="polaroid-name">{polaroid.name}</p>
+        </div>
+      ))}
     </section>
   )
 }
