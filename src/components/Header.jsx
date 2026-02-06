@@ -1,6 +1,6 @@
 const Header = () => {
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-black py-4 md:py-5">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-black py-5 md:py-6">
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
         {/* Social Icons — subtle, secondary */}
         <div className="flex items-center gap-4">
@@ -61,7 +61,7 @@ const Header = () => {
           <img
             src="/Logos/BBMainLogoTransparent.png"
             alt="Beauty By Mrs. Black Owned"
-            className="h-14 md:h-20 w-auto"
+            className="h-20 md:h-28 w-auto"
           />
         </a>
 
