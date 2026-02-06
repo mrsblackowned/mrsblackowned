@@ -59,6 +59,8 @@ const BookSection = () => {
     try {
       const res = await fetch('/api/create-checkout-session', {
         method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ edition: 'ebook' }),
       })
       const data = await res.json()
       if (data.url) {
