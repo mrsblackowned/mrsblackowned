@@ -6,6 +6,7 @@ import ProductShowcase from './components/ProductShowcase'
 import EditorialCollage from './components/EditorialCollage'
 import WhatsIncluded from './components/WhatsIncluded'
 import BookSection from './components/BookSection'
+import BookFunnel from './components/BookFunnel'
 import Platform from './components/Platform'
 import ThemeFeatures from './components/ThemeFeatures'
 import Mission from './components/Mission'
@@ -26,6 +27,7 @@ function HomePage() {
       <Header />
       <PolaroidIntro />
       <Hero />
+      <BookFunnel />
       <ProductShowcase />
       <EditorialCollage />
       <WhatsIncluded />
