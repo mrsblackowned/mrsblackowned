@@ -52,9 +52,12 @@ const EditionSelect = () => {
       const data = await res.json()
       if (data.url) {
         window.location.href = data.url
+      } else {
+        alert('Something went wrong. Please try again.')
       }
     } catch (err) {
       console.error('Checkout error:', err)
+      alert('Unable to connect to checkout. Please try again.')
     }
   }
 
@@ -105,6 +108,9 @@ const EditionSelect = () => {
             >
               Claim Your Copy
             </button>
+            <p className="mt-3 font-body text-[9px] uppercase tracking-[0.15em] text-black/25">
+              Final Sale · Limited Edition · No Returns
+            </p>
           </div>
 
           {/* Coffee Table Edition */}
@@ -138,6 +144,9 @@ const EditionSelect = () => {
             >
               Reserve Your Copy
             </button>
+            <p className="mt-3 font-body text-[9px] uppercase tracking-[0.15em] text-black/25">
+              Final Sale · Limited Edition · No Returns
+            </p>
           </div>
         </div>
       </div>

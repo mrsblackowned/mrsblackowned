@@ -5,9 +5,20 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 gsap.registerPlugin(ScrollTrigger)
 
 const footerLinks = {
-  Shop: ['New Arrivals', 'Best Sellers', 'Skincare', 'Fragrance', 'Hair Care'],
-  About: ['Our Story', 'The Book', 'The Editorial', 'Press'],
-  Support: ['Contact', 'Shipping', 'Returns', 'FAQ'],
+  Book: [
+    { label: 'The Book', href: '#book-funnel' },
+    { label: 'Choose Your Edition', href: '#choose-edition' },
+    { label: 'What\'s Included', href: '#whats-included' },
+  ],
+  About: [
+    { label: 'The Editor', href: '#about' },
+    { label: 'The Mission', href: '#mission' },
+    { label: 'The Platform', href: '#platform' },
+  ],
+  Support: [
+    { label: 'Refund Policy', href: '/refund-policy' },
+    { label: 'Contact', href: 'mailto:support@mrsblackowned.com' },
+  ],
 }
 
 const Footer = () => {
@@ -79,13 +90,13 @@ const Footer = () => {
                 {title}
               </h4>
               <ul className="space-y-3">
-                {links.map((link) => (
-                  <li key={link}>
+                {links.map((item) => (
+                  <li key={item.label}>
                     <a
-                      href="#"
+                      href={item.href}
                       className="font-body text-xs text-white/30 hover:text-white transition-colors duration-300"
                     >
-                      {link}
+                      {item.label}
                     </a>
                   </li>
                 ))}
@@ -116,11 +127,8 @@ const Footer = () => {
             © {new Date().getFullYear()} Mrs Black Owned. All rights reserved.
           </p>
           <div className="flex gap-6">
-            <a href="#" className="font-body text-[10px] text-white/20 hover:text-white/40 transition-colors">
-              Privacy Policy
-            </a>
-            <a href="#" className="font-body text-[10px] text-white/20 hover:text-white/40 transition-colors">
-              Terms of Service
+            <a href="/refund-policy" className="font-body text-[10px] text-white/20 hover:text-white/40 transition-colors">
+              Refund Policy
             </a>
           </div>
         </div>

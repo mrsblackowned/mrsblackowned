@@ -56,7 +56,7 @@ const About = () => {
           <div ref={imageRef} className="relative">
             <div className="aspect-[3/4] bg-neutral-100 overflow-hidden relative">
               <img
-                src="/polaroids/7.jpeg"
+                src="/about/author.jpg"
                 alt="Kay Martin"
                 className="w-full h-full object-cover grayscale"
                 loading="lazy"
