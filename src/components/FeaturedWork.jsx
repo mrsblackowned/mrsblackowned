@@ -4,21 +4,27 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const works = [
+const posts = [
   {
-    category: 'Editorial',
-    title: 'The Politics of Black Beauty',
-    description: 'A deep dive into how beauty standards have shifted — and who gets to define them.',
+    category: 'Feature',
+    title: 'Clock It: Octavia Morgan x Bevy Smith',
+    excerpt:
+      'A spotlight on Octavia Morgan and her collaboration with the iconic Bevy Smith — celebrating bold style, beauty, and the art of showing up unapologetically.',
+    url: 'https://open.substack.com/pub/beautybymrsbo/p/clock-it-octavia-morgan-x-bevy-smith?utm_campaign=post&utm_medium=web',
   },
   {
-    category: 'Essay',
-    title: 'Ownership as Identity',
-    description: 'What it means to own your story, your brand, and your place in the culture.',
+    category: 'Editorial',
+    title: "My Savoir Faire's Crownstone Collection",
+    excerpt:
+      'An exclusive look at the Crownstone Collection from My Savoir Faire — where luxury meets intentional craftsmanship and timeless beauty.',
+    url: 'https://open.substack.com/pub/beautybymrsbo/p/my-savoir-faires-crownstone-collection?utm_campaign=post&utm_medium=web',
   },
   {
     category: 'Feature',
-    title: 'Skin Deep, Soul Wide',
-    description: 'Exploring the intersection of skincare rituals and self-care as resistance.',
+    title: 'From Zanzibar with Love: Bixa Beauty',
+    excerpt:
+      'Zanzibar was her muse. Bixa Beauty, founded by Deida Massey, redefines clean beauty — from the name to the packaging to the hues. Each product pays homage to the Achiote Tree, affectionately known as "the lipstick tree."',
+    url: 'https://open.substack.com/pub/beautybymrsbo/p/from-zanzibar-with-love-bixa-beauty?utm_campaign=post&utm_medium=web',
   },
 ]
 
@@ -66,35 +72,40 @@ const FeaturedWork = () => {
       <div className="max-w-5xl mx-auto">
         <div ref={headerRef} className="text-center mb-16">
           <p className="font-body text-[11px] uppercase tracking-[0.3em] text-black/40 mb-4">
-            Inside the Pages
+            From the Substack
           </p>
           <h2 className="font-serif text-4xl md:text-5xl font-medium tracking-tight">
-            Featured Work
+            Latest Posts
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {works.map((work, i) => (
+          {posts.map((post, i) => (
             <article
               key={i}
               ref={(el) => (cardsRef.current[i] = el)}
-              className="group border border-black/[0.06] p-8 hover:bg-black hover:text-white transition-all duration-500 cursor-pointer"
+              className="group border border-black/[0.06] p-8 hover:bg-black hover:text-white transition-all duration-500"
             >
               <p className="font-body text-[10px] uppercase tracking-[0.25em] text-black/40 group-hover:text-white/40 mb-4 transition-colors duration-500">
-                {work.category}
+                {post.category}
               </p>
               <h3 className="font-serif text-xl md:text-2xl font-medium mb-4 tracking-tight leading-snug">
-                {work.title}
+                {post.title}
               </h3>
               <p className="font-body text-sm text-black/50 group-hover:text-white/50 leading-relaxed mb-6 transition-colors duration-500">
-                {work.description}
+                {post.excerpt}
               </p>
-              <span className="inline-flex items-center gap-2 font-body text-xs uppercase tracking-[0.15em] font-semibold text-accent">
-                Read More
+              <a
+                href={post.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-body text-xs uppercase tracking-[0.15em] font-semibold text-accent hover:opacity-70 transition-opacity"
+              >
+                Continue Reading on Substack
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M5 12h14M12 5l7 7-7 7" />
                 </svg>
-              </span>
+              </a>
             </article>
           ))}
         </div>
