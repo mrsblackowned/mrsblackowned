@@ -1,6 +1,5 @@
 import BookConviction from './BookConviction'
-import PagePreviews from './PagePreviews'
-import PostPreviewCTA from './PostPreviewCTA'
+import BookPreview from './BookPreview'
 import EditionSelect from './EditionSelect'
 import Affirmation from './Affirmation'
 
@@ -9,14 +8,13 @@ import Affirmation from './Affirmation'
  *
  * Funnel structure:
  *   1. BookConviction  — Book displayed as cultural object, feature statements, one soft CTA
- *   2. PagePreviews    — Part I page spreads, NO CTAs (pages do the selling)
- *   3. PostPreviewCTA  — Transition moment after Part I, one secondary CTA
- *   4. EditionSelect   — "Choose Your Edition" final conversion (only side-by-side options)
- *   5. Affirmation     — Closing cultural statement, subtle text link
+ *   2. BookPreview     — Interactive page-flip preview with "Own a Copy" CTA on final page
+ *   3. EditionSelect   — "Choose Your Edition" final conversion (only side-by-side options)
+ *   4. Affirmation     — Closing cultural statement, subtle text link
  *
  * CTA language rotation:
  *   Primary (before format choice):  "Begin the Experience"
- *   Secondary (after Part I):        "Continue the Journey"
+ *   Book CTA (final preview page):   "Own a Copy" → opens purchase modal
  *   Final (one time only):           "Choose Your Edition"
  *   Affirmation (subtle link):       "Own the Archive"
  *
@@ -29,8 +27,7 @@ const BookFunnel = () => {
   return (
     <>
       <BookConviction />
-      <PagePreviews />
-      <PostPreviewCTA />
+      <BookPreview />
       <EditionSelect />
       <Affirmation />
     </>

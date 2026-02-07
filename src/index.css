@@ -131,3 +131,84 @@ body {
     padding: 10px 0 4px;
   }
 }
+
+/* Book Preview */
+.book-preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.book-preview-wrapper {
+  display: flex;
+  justify-content: center;
+  perspective: 2000px;
+}
+
+.book-preview-flipbook {
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.book-page {
+  background: #fff;
+  overflow: hidden;
+}
+
+.book-page img {
+  display: block;
+  -webkit-user-drag: none;
+  user-select: none;
+}
+
+.book-page-cta {
+  background: #fff;
+}
+
+/* Purchase CTA Modal */
+.purchase-cta-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease-out;
+}
+
+.purchase-cta-panel {
+  position: relative;
+  background: #fff;
+  max-width: 640px;
+  width: 100%;
+  padding: 2.5rem;
+  text-align: center;
+  animation: slideUp-modal 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+  .purchase-cta-panel {
+    padding: 3rem;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp-modal {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

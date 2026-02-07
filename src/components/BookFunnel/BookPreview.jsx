@@ -1,0 +1,177 @@
+import { useState, useRef, useEffect, useCallback } from 'react'
+import HTMLFlipBook from 'react-pageflip'
+import BookPage from './BookPage'
+import PurchaseCTA from './PurchaseCTA'
+
+const pages = [
+  { src: '/book/book-cover.png', alt: 'All The Black-Owned, Babee! — 2026 Edition — Front Cover' },
+  { src: '/book/page-1.png', alt: '"To Beauty… May it always be apart of who we are."' },
+  { src: '/book/page-2.png', alt: 'The Pulse of Black Luxury' },
+  { src: '/book/page-3.png', alt: 'With Gratitude — dedication and acknowledgments' },
+  { src: '/book/page-4.png', alt: 'Table of Contents — The Black Beauty Experience' },
+  { src: '/book/page-5.png', alt: 'The Elemental Fragrances, Hair Care, and the All The Black Owned Babee Guide' },
+  { src: '/book/page-6.png', alt: 'Make Up, Skincare & Bodycare, Fragrance' },
+  { src: '/book/page-7.png', alt: 'Foreword — the moment that started it all at Scent Xplore 2024' },
+  { src: '/book/page-8.png', alt: '"Hey y\'all hey! You already know I\'m looking for the Black Owned Babee!"' },
+  { src: '/book/page-9.png', alt: 'From reviewing products in real time to passing the torch forward' },
+  { src: '/book/page-10.png', alt: '"Folks were just waiting for me to find the audacity."' },
+  { src: '/book/page-11.png', alt: 'Welcome — a curated guide to shopping Black and African-owned with intention' },
+  { src: '/book/page-12.png', alt: 'From the Desk of Savoir Faire — a letter from Chris Classic' },
+  { src: '/book/page-13.png', alt: 'Part I: Why This Guide Exists — they are not alternatives, they are originators' },
+  { src: '/book/page-14.png', alt: 'Visibility is not the same as support' },
+  { src: '/book/page-16.png', alt: 'Retail vs. Direct — how to shop with purpose' },
+  { src: '/book/page-17.png', alt: 'Sampling Etiquette — try with intention' },
+  { src: '/book/page-18.png', alt: 'Verified sample and discovery options' },
+  { src: '/book/page-19.png', alt: 'Intentional support is strategic support' },
+]
+
+const BookPreview = () => {
+  const [currentPage, setCurrentPage] = useState(0)
+  const [ctaOpen, setCtaOpen] = useState(false)
+  const [dimensions, setDimensions] = useState({ width: 400, height: 560 })
+  const containerRef = useRef(null)
+  const bookRef = useRef(null)
+  const sectionRef = useRef(null)
+
+  const totalPages = pages.length + 1 // +1 for final CTA page
+  const isLastPage = currentPage >= totalPages - 2
+
+  const updateDimensions = useCallback(() => {
+    if (!containerRef.current) return
+    const containerWidth = containerRef.current.offsetWidth
+    const maxWidth = Math.min(containerWidth - 32, 500)
+    const height = Math.round(maxWidth * 1.4)
+    setDimensions({ width: maxWidth, height })
+  }, [])
+
+  useEffect(() => {
+    updateDimensions()
+    window.addEventListener('resize', updateDimensions)
+    return () => window.removeEventListener('resize', updateDimensions)
+  }, [updateDimensions])
+
+  const onFlip = useCallback((e) => {
+    setCurrentPage(e.data)
+  }, [])
+
+  const flipNext = () => {
+    bookRef.current?.pageFlip()?.flipNext()
+  }
+
+  const flipPrev = () => {
+    bookRef.current?.pageFlip()?.flipPrev()
+  }
+
+  return (
+    <section
+      ref={sectionRef}
+      id="book-preview"
+      className="py-24 md:py-36 px-6 bg-neutral-50"
+    >
+      <div className="max-w-6xl mx-auto">
+        <div className="text-center mb-12 md:mb-20">
+          <p className="font-body text-[10px] uppercase tracking-[0.4em] text-black/30 mb-4">
+            Part I
+          </p>
+          <h2 className="font-serif text-3xl md:text-5xl lg:text-6xl font-medium text-black tracking-tight leading-[1.1]">
+            Inside the Book
+          </h2>
+          <p className="font-body text-xs text-black/30 mt-4 tracking-wide">
+            Click, drag, or swipe to turn pages
+          </p>
+        </div>
+
+        {/* Book container */}
+        <div ref={containerRef} className="book-preview-container">
+          <div className="book-preview-wrapper">
+            <HTMLFlipBook
+              ref={bookRef}
+              width={dimensions.width}
+              height={dimensions.height}
+              size="fixed"
+              minWidth={280}
+              maxWidth={500}
+              minHeight={392}
+              maxHeight={700}
+              showCover={true}
+              mobileScrollSupport={false}
+              onFlip={onFlip}
+              flippingTime={800}
+              usePortrait={true}
+              startZIndex={0}
+              autoSize={false}
+              maxShadowOpacity={0.3}
+              drawShadow={true}
+              useMouseEvents={true}
+              swipeDistance={30}
+              clickEventForward={false}
+              className="book-preview-flipbook"
+            >
+              {/* Image pages */}
+              {pages.map((page, i) => (
+                <BookPage key={i} src={page.src} alt={page.alt} />
+              ))}
+
+              {/* Final CTA page */}
+              <BookPage className="book-page-cta">
+                <div className="flex flex-col items-center justify-center h-full px-6 py-8 bg-white text-center">
+                  <p className="font-script text-xl md:text-2xl text-accent mb-4">
+                    the full story awaits
+                  </p>
+
+                  <div className="w-10 h-px bg-accent/40 mx-auto mb-4" />
+
+                  <p className="font-body text-xs text-black/40 leading-relaxed mb-6 max-w-xs mx-auto">
+                    What you've seen is only the beginning. 85 pages of curated
+                    celebration — limited edition, released once a year.
+                  </p>
+
+                  <button
+                    onClick={() => setCtaOpen(true)}
+                    className="bg-black text-white font-body text-xs uppercase tracking-[0.2em] px-8 py-3.5 hover:bg-accent hover:text-black transition-all duration-300 rounded-sm cursor-pointer"
+                  >
+                    Own a Copy
+                  </button>
+
+                  <p className="mt-3 font-body text-[9px] uppercase tracking-[0.15em] text-black/20">
+                    Limited Edition · 2026
+                  </p>
+                </div>
+              </BookPage>
+            </HTMLFlipBook>
+          </div>
+
+          {/* Navigation controls */}
+          <div className="flex items-center justify-center gap-8 mt-8">
+            <button
+              onClick={flipPrev}
+              disabled={currentPage === 0}
+              className="font-body text-[10px] uppercase tracking-[0.2em] text-black/30 hover:text-black disabled:opacity-20 disabled:cursor-default transition-colors duration-300 cursor-pointer"
+              aria-label="Previous page"
+            >
+              ← Prev
+            </button>
+
+            <span className="font-body text-[10px] tracking-[0.15em] text-black/25">
+              {currentPage + 1} / {totalPages}
+            </span>
+
+            <button
+              onClick={flipNext}
+              disabled={isLastPage}
+              className="font-body text-[10px] uppercase tracking-[0.2em] text-black/30 hover:text-black disabled:opacity-20 disabled:cursor-default transition-colors duration-300 cursor-pointer"
+              aria-label="Next page"
+            >
+              Next →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Purchase modal */}
+      <PurchaseCTA isOpen={ctaOpen} onClose={() => setCtaOpen(false)} />
+    </section>
+  )
+}
+
+export default BookPreview

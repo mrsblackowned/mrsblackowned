@@ -97,7 +97,7 @@ const EditionSelect = () => {
 
             <div className="w-12 h-px bg-accent mx-auto mb-6" />
 
-            <p className="font-serif text-3xl text-black mb-1">$25</p>
+            <p className="font-serif text-3xl text-black mb-1">$30</p>
             <p className="font-body text-[10px] uppercase tracking-[0.2em] text-black/30 mb-8">
               PDF delivered immediately
             </p>
@@ -133,7 +133,7 @@ const EditionSelect = () => {
 
             <div className="w-12 h-px bg-accent mx-auto mb-6" />
 
-            <p className="font-serif text-3xl text-black mb-1">$65</p>
+            <p className="font-serif text-3xl text-black mb-1">$75</p>
             <p className="font-body text-[10px] uppercase tracking-[0.2em] text-black/30 mb-8">
               Ships when ready
             </p>

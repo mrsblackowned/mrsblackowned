@@ -43,10 +43,10 @@ const Platform = () => {
         </p>
 
         <a
-          href="#"
+          href="#choose-edition"
           className="inline-block bg-black text-white text-xs uppercase tracking-[0.2em] px-10 py-4 hover:bg-accent hover:text-black transition-all duration-300 rounded-sm"
         >
-          Enter the Editorial
+          Own the Archive
         </a>
       </div>
     </section>

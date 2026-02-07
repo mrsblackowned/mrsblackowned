@@ -141,7 +141,7 @@ const BookSection = () => {
               </button>
 
               <div className="text-right">
-                <p className="text-2xl md:text-3xl font-semibold text-accent/80">$25</p>
+                <p className="text-2xl md:text-3xl font-semibold text-accent/80">$30</p>
                 <p className="text-[10px] uppercase tracking-widest text-white/30 mt-1">
                   Digital Edition
                 </p>
