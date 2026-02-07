@@ -162,13 +162,13 @@ const Hero = () => {
 
         <div ref={ctaRef} className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="#products"
+            href="#choose-edition"
             className="inline-block bg-black text-white font-body text-xs uppercase tracking-[0.2em] px-10 py-4 hover:bg-accent hover:text-black transition-all duration-300 rounded-sm"
           >
             Shop the Collection
           </a>
           <a
-            href="#book"
+            href="#book-funnel"
             className="inline-block border border-black text-black font-body text-xs uppercase tracking-[0.2em] px-10 py-4 hover:bg-black hover:text-white transition-all duration-300 rounded-sm"
           >
             The Book
