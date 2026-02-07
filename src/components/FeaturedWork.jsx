@@ -14,9 +14,9 @@ const posts = [
   },
   {
     category: 'Editorial',
-    title: "My Savoir Faire's Crownstone Collection",
+    title: "Savoir Faire's Crownstones Collection",
     excerpt:
-      'An exclusive look at the Crownstone Collection from My Savoir Faire — where luxury meets intentional craftsmanship and timeless beauty.',
+      'Mr. Chris Classic has set the standard for how fragrances are experienced. The Crownstones Collection features crystal atomizer caps chosen for each scent — Unakite, Sodalite, and Setonite — elevating fragrance into ceremony, legacy, and identity. Perfumery didn\'t just start in bottles. It started in the way bodies were adorned with oils and beads soaked in scented woods.',
     url: 'https://open.substack.com/pub/beautybymrsbo/p/my-savoir-faires-crownstone-collection?utm_campaign=post&utm_medium=web',
   },
   {
