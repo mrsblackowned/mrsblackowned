@@ -7,13 +7,13 @@ const products = {
     name: "All The Black-Owned, Babee! — Digital Edition",
     description:
       "The complete 2026 guide to Black-owned beauty and fragrance — PDF delivered instantly",
-    amount: 2500, // $25.00
+    amount: 3000, // $30.00
   },
   "coffee-table": {
     name: "All The Black-Owned, Babee! — Coffee Table Edition",
     description:
       "The complete 2026 guide to Black-owned beauty and fragrance — hardcover pre-order",
-    amount: 6500, // $65.00
+    amount: 7500, // $75.00
   },
 }
 
