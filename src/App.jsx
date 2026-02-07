@@ -6,18 +6,17 @@ import WhatsIncluded from './components/WhatsIncluded'
 import BookSection from './components/BookSection'
 import BookFunnel from './components/BookFunnel'
 import Platform from './components/Platform'
-import ThemeFeatures from './components/ThemeFeatures'
 import Mission from './components/Mission'
 import Authority from './components/Authority'
 import Vision from './components/Vision'
 import Testimonials from './components/Testimonials'
-import CTABlock from './components/CTABlock'
 import About from './components/About'
 import FeaturedBrands from './components/FeaturedBrands'
 import FeaturedWork from './components/FeaturedWork'
 import Newsletter from './components/Newsletter'
 import Footer from './components/Footer'
 import Success from './components/Success'
+import RefundPolicy from './components/RefundPolicy'
 
 function HomePage() {
   return (
@@ -28,11 +27,9 @@ function HomePage() {
       <BookFunnel />
       <WhatsIncluded />
       <BookSection />
-      <ThemeFeatures />
       <Platform />
       <Mission />
       <Testimonials />
-      <CTABlock />
       <About />
       <FeaturedBrands />
       <Authority />
@@ -50,6 +47,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/success" element={<Success />} />
+        <Route path="/refund-policy" element={<RefundPolicy />} />
       </Routes>
     </div>
   )

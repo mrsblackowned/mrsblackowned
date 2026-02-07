@@ -108,6 +108,9 @@ const EditionSelect = () => {
             >
               Claim Your Copy
             </button>
+            <p className="mt-3 font-body text-[9px] uppercase tracking-[0.15em] text-black/25">
+              Final Sale · Limited Edition · No Returns
+            </p>
           </div>
 
           {/* Coffee Table Edition */}
@@ -141,6 +144,9 @@ const EditionSelect = () => {
             >
               Reserve Your Copy
             </button>
+            <p className="mt-3 font-body text-[9px] uppercase tracking-[0.15em] text-black/25">
+              Final Sale · Limited Edition · No Returns
+            </p>
           </div>
         </div>
       </div>
