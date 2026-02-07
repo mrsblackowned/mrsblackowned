@@ -1,17 +1,15 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { loadStripe } from '@stripe/stripe-js'
 
 gsap.registerPlugin(ScrollTrigger)
-
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
 
 const BookSection = () => {
   const sectionRef = useRef(null)
   const labelRef = useRef(null)
   const contentRef = useRef(null)
   const coverRef = useRef(null)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -56,18 +54,36 @@ const BookSection = () => {
   }, [])
 
   const handleCheckout = async () => {
+    if (loading) return
+    setLoading(true)
+
     try {
       const res = await fetch('/api/create-checkout-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ edition: 'ebook' }),
       })
+
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}))
+        console.error('Checkout API error:', res.status, errorData)
+        alert(errorData.error || 'Something went wrong. Please try again.')
+        setLoading(false)
+        return
+      }
+
       const data = await res.json()
       if (data.url) {
         window.location.href = data.url
+      } else {
+        console.error('No checkout URL returned:', data)
+        alert('Something went wrong. Please try again.')
+        setLoading(false)
       }
     } catch (err) {
       console.error('Checkout error:', err)
+      alert('Unable to connect to checkout. Please try again.')
+      setLoading(false)
     }
   }
 
@@ -135,9 +151,10 @@ const BookSection = () => {
             <div className="flex justify-between items-end">
               <button
                 onClick={handleCheckout}
-                className="border border-accent/60 px-8 py-3 uppercase tracking-[0.2em] text-xs text-accent hover:bg-accent hover:text-black transition duration-300 rounded-sm"
+                disabled={loading}
+                className="border border-accent/60 px-8 py-3 uppercase tracking-[0.2em] text-xs text-accent hover:bg-accent hover:text-black transition duration-300 rounded-sm disabled:opacity-50 disabled:cursor-wait"
               >
-                View the Issue
+                {loading ? 'Redirecting…' : 'View the Issue'}
               </button>
 
               <div className="text-right">

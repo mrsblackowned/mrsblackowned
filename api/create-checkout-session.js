@@ -1,7 +1,5 @@
 import Stripe from "stripe"
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
-
 const products = {
   ebook: {
     name: "All The Black-Owned, Babee! — Digital Edition",
@@ -18,12 +16,30 @@ const products = {
 }
 
 export default async function handler(req, res) {
+  // Allow POST only
   if (req.method !== "POST") {
-    return res.status(405).end("Method Not Allowed")
+    res.setHeader("Allow", "POST")
+    return res.status(405).json({ error: "Method Not Allowed" })
   }
+
+  // Validate Stripe secret key is configured
+  if (!process.env.STRIPE_SECRET_KEY) {
+    console.error("STRIPE_SECRET_KEY is not set in environment variables")
+    return res.status(500).json({
+      error: "Payment service is not configured. Please contact support.",
+    })
+  }
+
+  const stripe = new Stripe(process.env.STRIPE_SECRET_KEY)
 
   const { edition } = req.body || {}
   const product = products[edition] || products.ebook
+
+  // Build origin URL with fallback
+  const origin =
+    req.headers.origin ||
+    req.headers.referer?.replace(/\/$/, "") ||
+    "https://mrsblackowned.com"
 
   try {
     const session = await stripe.checkout.sessions.create({
@@ -42,12 +58,13 @@ export default async function handler(req, res) {
           quantity: 1,
         },
       ],
-      success_url: `${req.headers.origin}/success`,
-      cancel_url: `${req.headers.origin}/`,
+      success_url: `${origin}/success`,
+      cancel_url: `${origin}/`,
     })
 
     res.status(200).json({ url: session.url })
   } catch (err) {
-    res.status(500).json({ error: err.message })
+    console.error("Stripe checkout error:", err.message)
+    res.status(500).json({ error: "Failed to create checkout session." })
   }
 }

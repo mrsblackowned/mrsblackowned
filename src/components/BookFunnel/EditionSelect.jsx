@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -8,6 +8,7 @@ const EditionSelect = () => {
   const sectionRef = useRef(null)
   const headingRef = useRef(null)
   const cardsRef = useRef(null)
+  const [loading, setLoading] = useState(null) // tracks which edition is loading
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -43,21 +44,36 @@ const EditionSelect = () => {
   }, [])
 
   const handleCheckout = async (edition) => {
+    if (loading) return // prevent double-clicks
+    setLoading(edition)
+
     try {
       const res = await fetch('/api/create-checkout-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ edition }),
       })
+
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}))
+        console.error('Checkout API error:', res.status, errorData)
+        alert(errorData.error || 'Something went wrong. Please try again.')
+        setLoading(null)
+        return
+      }
+
       const data = await res.json()
       if (data.url) {
         window.location.href = data.url
       } else {
+        console.error('No checkout URL returned:', data)
         alert('Something went wrong. Please try again.')
+        setLoading(null)
       }
     } catch (err) {
       console.error('Checkout error:', err)
       alert('Unable to connect to checkout. Please try again.')
+      setLoading(null)
     }
   }
 
@@ -104,9 +120,10 @@ const EditionSelect = () => {
 
             <button
               onClick={() => handleCheckout('ebook')}
-              className="w-full bg-black text-white font-body text-xs uppercase tracking-[0.2em] px-8 py-4 hover:bg-accent hover:text-black transition-all duration-300 rounded-sm cursor-pointer"
+              disabled={loading !== null}
+              className="w-full bg-black text-white font-body text-xs uppercase tracking-[0.2em] px-8 py-4 hover:bg-accent hover:text-black transition-all duration-300 rounded-sm cursor-pointer disabled:opacity-50 disabled:cursor-wait"
             >
-              Claim Your Copy
+              {loading === 'ebook' ? 'Redirecting…' : 'Claim Your Copy'}
             </button>
             <p className="mt-3 font-body text-[9px] uppercase tracking-[0.15em] text-black/25">
               Final Sale · Limited Edition · No Returns
@@ -140,9 +157,10 @@ const EditionSelect = () => {
 
             <button
               onClick={() => handleCheckout('coffee-table')}
-              className="w-full border border-black text-black font-body text-xs uppercase tracking-[0.2em] px-8 py-4 hover:bg-black hover:text-white transition-all duration-300 rounded-sm cursor-pointer"
+              disabled={loading !== null}
+              className="w-full border border-black text-black font-body text-xs uppercase tracking-[0.2em] px-8 py-4 hover:bg-black hover:text-white transition-all duration-300 rounded-sm cursor-pointer disabled:opacity-50 disabled:cursor-wait"
             >
-              Reserve Your Copy
+              {loading === 'coffee-table' ? 'Redirecting…' : 'Reserve Your Copy'}
             </button>
             <p className="mt-3 font-body text-[9px] uppercase tracking-[0.15em] text-black/25">
               Final Sale · Limited Edition · No Returns
