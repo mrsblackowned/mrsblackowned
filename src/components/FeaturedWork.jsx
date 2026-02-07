@@ -9,7 +9,7 @@ const posts = [
     category: 'Feature',
     title: 'Clock It: Octavia Morgan x Bevy Smith',
     excerpt:
-      'A spotlight on Octavia Morgan and her collaboration with the iconic Bevy Smith — celebrating bold style, beauty, and the art of showing up unapologetically.',
+      'Octavia Morgan Los Angeles is redefining luxury fragrance — clean, genderless, and unapologetic. As the first Black and woman-owned prestige fragrance brand at Ulta Beauty, Morgan draws from her nursing background and her grandmother\'s herbalist wisdom to craft scents rooted in intention and wellness.',
     url: 'https://open.substack.com/pub/beautybymrsbo/p/clock-it-octavia-morgan-x-bevy-smith?utm_campaign=post&utm_medium=web',
   },
   {
@@ -23,7 +23,7 @@ const posts = [
     category: 'Feature',
     title: 'From Zanzibar with Love: Bixa Beauty',
     excerpt:
-      'Zanzibar was her muse. Bixa Beauty, founded by Deida Massey, redefines clean beauty — from the name to the packaging to the hues. Each product pays homage to the Achiote Tree, affectionately known as "the lipstick tree."',
+      'Zanzibar was her muse. Founded by Deida Massey, Bixa Beauty pays homage to the Achiote Tree — the lipstick tree — whose seeds have been used as lip color for centuries by Indigenous peoples of the Amazon and Caribbean. Clean, intentional, and donating 10% of sales to girls\' education in Tanzania.',
     url: 'https://open.substack.com/pub/beautybymrsbo/p/from-zanzibar-with-love-bixa-beauty?utm_campaign=post&utm_medium=web',
   },
 ]
