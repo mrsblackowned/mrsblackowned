@@ -96,63 +96,20 @@ const BookSection = () => {
 
         <div
           ref={coverRef}
-          className="relative max-w-3xl mx-auto bg-black text-white aspect-[3/4] shadow-2xl overflow-hidden"
+          className="relative max-w-md mx-auto flex flex-col items-center gap-8"
         >
-          {/* Geometric accent */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 rounded-full border border-white/[0.04]" />
+          <img
+            src="/book/book-cover.png"
+            alt="All The Black-Owned, Babee! — Book Cover"
+            className="w-full shadow-2xl rounded-sm"
+          />
 
-          <div className="absolute inset-0 flex flex-col justify-between p-8 md:p-14">
-            <div>
-              <p className="font-body text-[10px] uppercase tracking-[0.4em] text-white/40">
-                Mrs Black Owned
-              </p>
-              <div className="w-10 h-px bg-accent/50 mt-3" />
-            </div>
-
-            <div className="max-w-md">
-              <h3 className="font-serif text-4xl md:text-6xl font-medium leading-[0.95] tracking-tight mb-8">
-                The Brands.<br />
-                The Founders.<br />
-                The Culture.
-              </h3>
-
-              <ul className="space-y-2 text-white/40 text-sm tracking-wide">
-                <li className="flex items-center gap-3">
-                  <span className="w-3 h-px bg-accent/60" />
-                  Profiles in ownership
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="w-3 h-px bg-accent/60" />
-                  Essays on Black aesthetics
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="w-3 h-px bg-accent/60" />
-                  An archive built to last
-                </li>
-              </ul>
-            </div>
-
-            <div className="flex justify-between items-end">
-              <button
-                onClick={handleCheckout}
-                className="border border-accent/60 px-8 py-3 uppercase tracking-[0.2em] text-xs text-accent hover:bg-accent hover:text-black transition duration-300 rounded-sm"
-              >
-                View the Issue
-              </button>
-
-              <div className="text-right">
-                <p className="text-2xl md:text-3xl font-semibold text-accent/80">$30</p>
-                <p className="text-[10px] uppercase tracking-widest text-white/30 mt-1">
-                  Digital Edition
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <div className="absolute top-6 right-6 md:top-8 md:right-8 text-right">
-            <p className="text-[10px] uppercase tracking-widest text-white/20">Issue</p>
-            <p className="text-xl md:text-2xl font-semibold text-accent/40">01</p>
-          </div>
+          <button
+            onClick={handleCheckout}
+            className="bg-black text-white px-10 py-4 uppercase tracking-[0.2em] text-sm font-body hover:bg-accent hover:text-black transition duration-300 rounded-sm"
+          >
+            Buy Now — $30
+          </button>
         </div>
       </div>
     </section>
