@@ -1,9 +1,12 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
-import { Link } from 'react-router-dom'
+import { Link, useSearchParams } from 'react-router-dom'
 
 const Success = () => {
   const contentRef = useRef(null)
+  const [searchParams] = useSearchParams()
+  const edition = searchParams.get('edition')
+  const isEbook = edition === 'ebook'
 
   useEffect(() => {
     gsap.from(contentRef.current.children, {
@@ -36,19 +39,34 @@ const Success = () => {
         <div className="w-12 h-px bg-accent mx-auto mb-8" />
 
         <p className="font-body text-base text-black/60 leading-relaxed mb-4">
-          Your digital edition is ready.
+          {isEbook
+            ? 'Your digital edition is ready to download.'
+            : 'Your order has been confirmed.'}
         </p>
         <p className="font-body text-sm text-black/40 leading-relaxed mb-10">
-          Check your inbox for instant access to the full issue —
-          profiles, essays, and the complete archive.
+          {isEbook
+            ? 'Click below to download your copy — profiles, essays, and the complete archive.'
+            : 'Check your inbox for your order confirmation and shipping updates.'}
         </p>
 
-        <Link
-          to="/"
-          className="inline-block bg-black text-white font-body text-xs uppercase tracking-[0.2em] px-10 py-4 hover:bg-accent hover:text-black transition-all duration-300 rounded-sm"
-        >
-          Continue Exploring
-        </Link>
+        {isEbook && (
+          <a
+            href="/ebooks/all-the-black-owned-babee-2026.pdf"
+            download
+            className="inline-block bg-accent text-black font-body text-xs uppercase tracking-[0.2em] px-10 py-4 hover:bg-accent-dark transition-all duration-300 rounded-sm mb-6"
+          >
+            Download Your Ebook
+          </a>
+        )}
+
+        <div>
+          <Link
+            to="/"
+            className="inline-block bg-black text-white font-body text-xs uppercase tracking-[0.2em] px-10 py-4 hover:bg-accent hover:text-black transition-all duration-300 rounded-sm"
+          >
+            Continue Exploring
+          </Link>
+        </div>
 
         <p className="mt-10 font-body text-[10px] text-black/25 tracking-[0.2em] uppercase">
           A confirmation has been sent to your email
