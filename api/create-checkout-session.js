@@ -42,7 +42,7 @@ export default async function handler(req, res) {
           quantity: 1,
         },
       ],
-      success_url: `${req.headers.origin}/success`,
+      success_url: `${req.headers.origin}/success?edition=${edition || 'ebook'}`,
       cancel_url: `${req.headers.origin}/`,
     })
 

@@ -51,7 +51,7 @@ const Footer = () => {
             <img
               src="/Logos/BBAlternateTransparent.png"
               alt="Mrs Black Owned"
-              className="h-10 md:h-12 w-auto mb-4 invert opacity-90"
+              className="h-16 md:h-20 w-auto mb-4 invert opacity-90"
             />
             <p className="font-body text-xs text-white/40 leading-relaxed mb-6 max-w-xs">
               A curated destination celebrating Black and African-owned beauty.
