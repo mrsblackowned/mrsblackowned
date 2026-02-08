@@ -51,7 +51,7 @@ const Success = () => {
 
         {isEbook && (
           <a
-            href="/ebooks/all-the-black-owned-babee-2026.pdf"
+            href="/ebooks/All The Black Owned Babee!.pdf"
             download
             className="inline-block bg-accent text-black font-body text-xs uppercase tracking-[0.2em] px-10 py-4 hover:bg-accent-dark transition-all duration-300 rounded-sm mb-6"
           >
