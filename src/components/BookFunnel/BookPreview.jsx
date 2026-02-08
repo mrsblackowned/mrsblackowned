@@ -104,7 +104,7 @@ const BookPreview = () => {
               drawShadow={true}
               useMouseEvents={true}
               swipeDistance={30}
-              clickEventForward={false}
+              clickEventForward={true}
               className="book-preview-flipbook"
             >
               {/* Image pages */}
