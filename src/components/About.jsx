@@ -56,7 +56,7 @@ const About = () => {
             <img
               src="/Images/IMG_3792.jpeg"
               alt="Kay Martin"
-              className="w-full h-full object-cover grayscale"
+              className="w-full h-full object-cover"
               loading="lazy"
             />
           </div>
@@ -77,7 +77,7 @@ const About = () => {
             ref={bylineRef}
             className="mt-4 font-body text-[10px] uppercase tracking-[0.35em] text-black/40 text-center"
           >
-            Beauty Editorial Writer · Brooklyn, NY
+            Beauty Editorial Writer · New York
           </p>
 
           <div ref={bioRef} className="mt-10 space-y-5">
