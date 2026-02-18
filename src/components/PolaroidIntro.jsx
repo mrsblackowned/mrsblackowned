@@ -51,10 +51,10 @@ const PolaroidIntro = () => {
           y: 0,
           opacity: 1,
           rotation: positions[i].rot + gsap.utils.random(-2, 2),
-          duration: 0.7,
+          duration: 0.8,
           ease: 'power3.out',
         },
-        i * 0.2
+        i * 0.45
       )
     })
 
