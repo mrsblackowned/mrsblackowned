@@ -53,7 +53,7 @@ const About = () => {
         <div ref={imageRef} className="mb-12 md:mb-16">
           <div className="aspect-[3/4] max-w-2xl mx-auto bg-neutral-100 overflow-hidden">
             <img
-              src="/Images/IMG_3792.jpeg"
+              src="/Images/IMG_3792.webp"
               alt="Kay Martin"
               className="w-full h-full object-cover"
               loading="lazy"

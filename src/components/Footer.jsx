@@ -48,7 +48,7 @@ const Footer = () => {
           {/* Brand column */}
           <div className="md:col-span-4">
             <img
-              src="/Logos/BBAlternateTransparent.png"
+              src="/Logos/BBAlternateTransparent.webp"
               alt="Mrs Black Owned"
               className="h-16 md:h-20 w-auto mb-4 invert opacity-90"
             />
