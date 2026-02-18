@@ -81,6 +81,7 @@ const PolaroidIntro = () => {
             <img
               src={polaroid.image}
               alt={polaroid.name}
+              {...(i === 0 ? { fetchpriority: 'high' } : { loading: 'lazy' })}
             />
           </div>
           <p className="polaroid-name">{polaroid.name}</p>
