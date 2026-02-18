@@ -2,17 +2,16 @@ import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
 
 const polaroidImages = [
-  { src: '/polaroids/0.jpeg', x: '-35%', y: '-20%', rotate: -12, scale: 0.9 },
-  { src: '/polaroids/1.jpeg', x: '30%', y: '-25%', rotate: 8, scale: 0.85 },
-  { src: '/polaroids/2.jpeg', x: '-40%', y: '15%', rotate: 6, scale: 0.8 },
-  { src: '/polaroids/3.jpeg', x: '35%', y: '20%', rotate: -10, scale: 0.85 },
-  { src: '/polaroids/4.jpeg', x: '-15%', y: '-35%', rotate: 15, scale: 0.7 },
-  { src: '/polaroids/5.jpeg', x: '15%', y: '35%', rotate: -8, scale: 0.75 },
-  { src: '/polaroids/6.jpeg', x: '45%', y: '-5%', rotate: 5, scale: 0.7 },
-  { src: '/polaroids/7.jpeg', x: '-45%', y: '35%', rotate: -15, scale: 0.65 },
+  { src: '/polaroids/0.webp', x: '-35%', y: '-20%', rotate: -12, scale: 0.9 },
+  { src: '/polaroids/1.webp', x: '30%', y: '-25%', rotate: 8, scale: 0.85 },
+  { src: '/polaroids/2.webp', x: '-40%', y: '15%', rotate: 6, scale: 0.8 },
+  { src: '/polaroids/3.webp', x: '35%', y: '20%', rotate: -10, scale: 0.85 },
+  { src: '/polaroids/4.webp', x: '-15%', y: '-35%', rotate: 15, scale: 0.7 },
+  { src: '/polaroids/5.webp', x: '15%', y: '35%', rotate: -8, scale: 0.75 },
+  { src: '/polaroids/6.webp', x: '45%', y: '-5%', rotate: 5, scale: 0.7 },
+  { src: '/polaroids/7.webp', x: '-45%', y: '35%', rotate: -15, scale: 0.65 },
 ]
 
 const Hero = () => {

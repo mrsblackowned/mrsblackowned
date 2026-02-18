@@ -2,7 +2,6 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
 
 const brands = [
   { src: '/brand1.svg', alt: 'Brand 1' },

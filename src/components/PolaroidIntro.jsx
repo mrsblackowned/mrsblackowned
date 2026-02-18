@@ -2,17 +2,17 @@ import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 
 const polaroidData = [
-  { name: 'Brenda',  image: '/polaroids/0.jpeg' },
-  { name: 'LaTisha', image: '/polaroids/1.jpeg' },
-  { name: 'Linda',   image: '/polaroids/2.jpeg' },
-  { name: 'Felicia', image: '/polaroids/3.jpeg' },
-  { name: 'Dawn',    image: '/polaroids/4.jpeg' },
-  { name: 'LeShaun', image: '/polaroids/5.jpeg' },
-  { name: 'Ines',    image: '/polaroids/6.jpeg' },
-  { name: 'Alicia',  image: '/polaroids/7.jpeg' },
-  { name: 'Theresa', image: '/polaroids/8.jpeg' },
-  { name: 'Monica',  image: '/polaroids/9.jpeg' },
-  { name: 'Sharron', image: '/polaroids/10.jpeg' },
+  { name: 'Brenda',  image: '/polaroids/0.webp' },
+  { name: 'LaTisha', image: '/polaroids/1.webp' },
+  { name: 'Linda',   image: '/polaroids/2.webp' },
+  { name: 'Felicia', image: '/polaroids/3.webp' },
+  { name: 'Dawn',    image: '/polaroids/4.webp' },
+  { name: 'LeShaun', image: '/polaroids/5.webp' },
+  { name: 'Ines',    image: '/polaroids/6.webp' },
+  { name: 'Alicia',  image: '/polaroids/7.webp' },
+  { name: 'Theresa', image: '/polaroids/8.webp' },
+  { name: 'Monica',  image: '/polaroids/9.webp' },
+  { name: 'Sharron', image: '/polaroids/10.webp' },
 ]
 
 // Scattered positions for a natural "thrown on table" layout

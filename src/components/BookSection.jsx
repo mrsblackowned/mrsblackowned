@@ -1,12 +1,6 @@
 import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { loadStripe } from '@stripe/stripe-js'
-
-gsap.registerPlugin(ScrollTrigger)
-
-const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLIC_KEY)
-
 const BookSection = () => {
   const sectionRef = useRef(null)
   const labelRef = useRef(null)
@@ -99,7 +93,7 @@ const BookSection = () => {
           className="relative max-w-md mx-auto flex flex-col items-center gap-8"
         >
           <img
-            src="/book/book-cover.png"
+            src="/book/book-cover.webp"
             alt="All The Black-Owned, Babee! — Book Cover"
             className="w-full shadow-2xl rounded-sm"
           />
