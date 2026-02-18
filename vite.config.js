@@ -9,7 +9,6 @@ export default defineConfig({
         manualChunks: {
           "vendor-react": ["react", "react-dom", "react-router-dom"],
           "vendor-gsap": ["gsap"],
-          "vendor-flipbook": ["react-pageflip"],
         },
       },
     },

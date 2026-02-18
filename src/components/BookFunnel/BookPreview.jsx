@@ -1,5 +1,4 @@
-import { useState, useRef, useEffect, useCallback } from 'react'
-import HTMLFlipBook from 'react-pageflip'
+import { useState, useRef, useCallback, useEffect } from 'react'
 import BookPage from './BookPage'
 import PurchaseCTA from './PurchaseCTA'
 
@@ -25,23 +24,20 @@ const pages = [
   { src: '/book/page-19.webp', alt: 'Intentional support is strategic support' },
 ]
 
+const TOTAL_PAGES = pages.length + 1 // +1 for the final CTA page
+
 const BookPreview = () => {
   const [currentPage, setCurrentPage] = useState(0)
   const [ctaOpen, setCtaOpen] = useState(false)
-  const [dimensions, setDimensions] = useState({ width: 400, height: 560 })
+  const [fading, setFading] = useState(false)
+  const [dimensions, setDimensions] = useState({ width: 320, height: 448 })
   const containerRef = useRef(null)
-  const bookRef = useRef(null)
-  const sectionRef = useRef(null)
-
-  const totalPages = pages.length + 1 // +1 for final CTA page
-  const isLastPage = currentPage >= totalPages - 2
+  const touchStartX = useRef(null)
 
   const updateDimensions = useCallback(() => {
     if (!containerRef.current) return
-    const containerWidth = containerRef.current.offsetWidth
-    const maxWidth = Math.min(containerWidth - 32, 500)
-    const height = Math.round(maxWidth * 1.4)
-    setDimensions({ width: maxWidth, height })
+    const maxWidth = Math.min(containerRef.current.offsetWidth - 32, 500)
+    setDimensions({ width: maxWidth, height: Math.round(maxWidth * 1.4) })
   }, [])
 
   useEffect(() => {
@@ -50,21 +46,32 @@ const BookPreview = () => {
     return () => window.removeEventListener('resize', updateDimensions)
   }, [updateDimensions])
 
-  const onFlip = useCallback((e) => {
-    setCurrentPage(e.data)
+  const changePage = useCallback((delta) => {
+    if (fading) return
+    const next = currentPage + delta
+    if (next < 0 || next >= TOTAL_PAGES) return
+    setFading(true)
+    setTimeout(() => {
+      setCurrentPage(next)
+      setFading(false)
+    }, 200)
+  }, [currentPage, fading])
+
+  const onTouchStart = useCallback((e) => {
+    touchStartX.current = e.touches[0].clientX
   }, [])
 
-  const flipNext = () => {
-    bookRef.current?.pageFlip()?.flipNext()
-  }
+  const onTouchEnd = useCallback((e) => {
+    if (touchStartX.current === null) return
+    const dx = e.changedTouches[0].clientX - touchStartX.current
+    if (Math.abs(dx) > 40) changePage(dx < 0 ? 1 : -1)
+    touchStartX.current = null
+  }, [changePage])
 
-  const flipPrev = () => {
-    bookRef.current?.pageFlip()?.flipPrev()
-  }
+  const isLastPage = currentPage === TOTAL_PAGES - 1
 
   return (
     <section
-      ref={sectionRef}
       id="book-preview"
       className="py-24 md:py-36 px-6 bg-neutral-50"
     >
@@ -77,87 +84,70 @@ const BookPreview = () => {
             Inside the Book
           </h2>
           <p className="font-body text-xs text-black/30 mt-4 tracking-wide">
-            Click, drag, or swipe to turn pages
+            Click or swipe to turn pages
           </p>
         </div>
 
-        {/* Book container */}
         <div ref={containerRef} className="book-preview-container">
           <div className="book-preview-wrapper">
-            <HTMLFlipBook
-              ref={bookRef}
-              width={dimensions.width}
-              height={dimensions.height}
-              size="fixed"
-              minWidth={280}
-              maxWidth={500}
-              minHeight={392}
-              maxHeight={700}
-              showCover={true}
-              mobileScrollSupport={false}
-              onFlip={onFlip}
-              flippingTime={800}
-              usePortrait={true}
-              startZIndex={0}
-              autoSize={false}
-              maxShadowOpacity={0.3}
-              drawShadow={true}
-              useMouseEvents={true}
-              swipeDistance={30}
-              clickEventForward={true}
+            <div
               className="book-preview-flipbook"
+              style={{
+                width: dimensions.width,
+                height: dimensions.height,
+                opacity: fading ? 0 : 1,
+                transition: 'opacity 0.2s ease',
+                cursor: isLastPage ? 'default' : 'pointer',
+              }}
+              onClick={() => changePage(1)}
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
             >
-              {/* Image pages */}
-              {pages.map((page, i) => (
-                <BookPage key={i} src={page.src} alt={page.alt} />
-              ))}
-
-              {/* Final CTA page */}
-              <BookPage className="book-page-cta">
-                <div className="flex flex-col items-center justify-center h-full px-6 py-8 bg-white text-center">
-                  <p className="font-script text-xl md:text-2xl text-accent mb-4">
-                    the full story awaits
-                  </p>
-
-                  <div className="w-10 h-px bg-accent/40 mx-auto mb-4" />
-
-                  <p className="font-body text-xs text-black/40 leading-relaxed mb-6 max-w-xs mx-auto">
-                    What you've seen is only the beginning. 85 pages of curated
-                    celebration — limited edition, released once a year.
-                  </p>
-
-                  <button
-                    onClick={() => setCtaOpen(true)}
-                    className="bg-black text-white font-body text-xs uppercase tracking-[0.2em] px-8 py-3.5 hover:bg-accent hover:text-black transition-all duration-300 rounded-sm cursor-pointer"
-                  >
-                    Own a Copy
-                  </button>
-
-                  <p className="mt-3 font-body text-[9px] uppercase tracking-[0.15em] text-black/20">
-                    Limited Edition · 2026
-                  </p>
-                </div>
-              </BookPage>
-            </HTMLFlipBook>
+              {currentPage < pages.length ? (
+                <BookPage
+                  src={pages[currentPage].src}
+                  alt={pages[currentPage].alt}
+                />
+              ) : (
+                <BookPage className="book-page-cta">
+                  <div className="flex flex-col items-center justify-center h-full px-6 py-8 bg-white text-center">
+                    <p className="font-script text-xl md:text-2xl text-accent mb-4">
+                      the full story awaits
+                    </p>
+                    <div className="w-10 h-px bg-accent/40 mx-auto mb-4" />
+                    <p className="font-body text-xs text-black/40 leading-relaxed mb-6 max-w-xs mx-auto">
+                      What you've seen is only the beginning. 85 pages of curated
+                      celebration — limited edition, released once a year.
+                    </p>
+                    <button
+                      onClick={(e) => { e.stopPropagation(); setCtaOpen(true) }}
+                      className="bg-black text-white font-body text-xs uppercase tracking-[0.2em] px-8 py-3.5 hover:bg-accent hover:text-black transition-all duration-300 rounded-sm cursor-pointer"
+                    >
+                      Own a Copy
+                    </button>
+                    <p className="mt-3 font-body text-[9px] uppercase tracking-[0.15em] text-black/20">
+                      Limited Edition · 2026
+                    </p>
+                  </div>
+                </BookPage>
+              )}
+            </div>
           </div>
 
-          {/* Navigation controls */}
           <div className="flex items-center justify-center gap-8 mt-8">
             <button
-              onClick={flipPrev}
+              onClick={() => changePage(-1)}
               disabled={currentPage === 0}
               className="font-body text-[10px] uppercase tracking-[0.2em] text-black/30 hover:text-black disabled:opacity-20 disabled:cursor-default transition-colors duration-300 cursor-pointer"
               aria-label="Previous page"
             >
               ← Prev
             </button>
-
             <span className="font-body text-[10px] tracking-[0.15em] text-black/25">
-              {currentPage + 1} / {totalPages}
+              {currentPage + 1} / {TOTAL_PAGES}
             </span>
-
             <button
-              onClick={flipNext}
+              onClick={() => changePage(1)}
               disabled={isLastPage}
               className="font-body text-[10px] uppercase tracking-[0.2em] text-black/30 hover:text-black disabled:opacity-20 disabled:cursor-default transition-colors duration-300 cursor-pointer"
               aria-label="Next page"
@@ -168,7 +158,6 @@ const BookPreview = () => {
         </div>
       </div>
 
-      {/* Purchase modal */}
       <PurchaseCTA isOpen={ctaOpen} onClose={() => setCtaOpen(false)} />
     </section>
   )
