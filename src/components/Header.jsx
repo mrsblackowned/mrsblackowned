@@ -59,7 +59,7 @@ const Header = () => {
         {/* Center: Logo — large and prominent */}
         <a href="/" className="absolute left-1/2 -translate-x-1/2">
           <img
-            src="/Logos/BBMainLogoTransparent.png"
+            src="/Logos/BBMainLogoTransparent.webp"
             alt="Beauty By Mrs. Black Owned"
             className="h-28 md:h-36 w-auto"
           />
