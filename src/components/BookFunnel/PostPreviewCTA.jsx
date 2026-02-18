@@ -3,7 +3,6 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import FunnelButton from './FunnelButton'
 
-gsap.registerPlugin(ScrollTrigger)
 
 const PostPreviewCTA = () => {
   const sectionRef = useRef(null)

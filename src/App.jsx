@@ -1,10 +1,10 @@
+import { lazy, Suspense } from 'react'
 import { Routes, Route } from 'react-router-dom'
 import Header from './components/Header'
 import PolaroidIntro from './components/PolaroidIntro'
 import Hero from './components/Hero'
 import WhatsIncluded from './components/WhatsIncluded'
 import BookSection from './components/BookSection'
-import BookFunnel from './components/BookFunnel'
 import Platform from './components/Platform'
 import Mission from './components/Mission'
 import Authority from './components/Authority'
@@ -15,8 +15,10 @@ import FeaturedBrands from './components/FeaturedBrands'
 import FeaturedWork from './components/FeaturedWork'
 import Newsletter from './components/Newsletter'
 import Footer from './components/Footer'
-import Success from './components/Success'
-import RefundPolicy from './components/RefundPolicy'
+
+const BookFunnel = lazy(() => import('./components/BookFunnel'))
+const Success = lazy(() => import('./components/Success'))
+const RefundPolicy = lazy(() => import('./components/RefundPolicy'))
 
 function HomePage() {
   return (
@@ -24,7 +26,9 @@ function HomePage() {
       <Header />
       <PolaroidIntro />
       <Hero />
-      <BookFunnel />
+      <Suspense fallback={null}>
+        <BookFunnel />
+      </Suspense>
       <WhatsIncluded />
       <BookSection />
       <Platform />
@@ -46,8 +50,8 @@ function App() {
     <div className="font-body bg-white text-primary">
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/success" element={<Success />} />
-        <Route path="/refund-policy" element={<RefundPolicy />} />
+        <Route path="/success" element={<Suspense fallback={null}><Success /></Suspense>} />
+        <Route path="/refund-policy" element={<Suspense fallback={null}><RefundPolicy /></Suspense>} />
       </Routes>
     </div>
   )

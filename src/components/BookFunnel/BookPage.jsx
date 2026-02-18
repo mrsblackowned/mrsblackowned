@@ -8,6 +8,7 @@ const BookPage = React.forwardRef(({ src, alt, children, className = '' }, ref) 
           src={src}
           alt={alt || ''}
           className="w-full h-full object-cover"
+          loading="lazy"
           draggable={false}
         />
       ) : (

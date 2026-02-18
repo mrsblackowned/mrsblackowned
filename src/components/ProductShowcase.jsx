@@ -2,7 +2,6 @@ import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
 
 const products = [
   { name: 'Radiance Serum', brand: 'Ami Cole', price: '$32', tag: 'Best Seller' },

@@ -2,7 +2,6 @@ import { useRef, useEffect } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollTrigger)
 
 const conversionFeatures = [
   { title: 'Quick View', desc: 'Let customers preview products without leaving the page.' },
