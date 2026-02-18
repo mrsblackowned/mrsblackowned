@@ -1,7 +1,7 @@
 {
   "rewrites": [
     {
-      "source": "/((?!api/)(?!book/)(?!about/)(?!polaroids/)(?!Logos/).*)",
+      "source": "/((?!api/)(?!book/)(?!about/)(?!polaroids/)(?!Logos/)(?!ebooks/).*)",
       "destination": "/index.html"
     }
   ]
