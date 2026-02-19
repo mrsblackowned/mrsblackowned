@@ -47,14 +47,15 @@ const emailHtml = (downloadUrl) => `<!DOCTYPE html>
             <td align="center" style="padding-bottom:12px;">
               <p style="margin:0;font-size:15px;color:#555555;line-height:1.75;">
                 Thank you for your purchase. Your digital edition of<br />
-                <em style="color:#111111;">All The Black-Owned, Babee!</em> is ready to download.
+                <em style="color:#111111;">All The Black-Owned, Babee!</em> is attached to this email.
               </p>
             </td>
           </tr>
           <tr>
             <td align="center" style="padding-bottom:36px;">
               <p style="margin:0;font-size:13px;color:#999999;line-height:1.75;">
-                Profiles, essays, and the complete archive — all in one place.
+                Profiles, essays, and the complete archive — all in one place.<br />
+                You can also download your copy anytime using the link below.
               </p>
             </td>
           </tr>
@@ -117,20 +118,36 @@ export default async function handler(req, res) {
 
   const email = session.customer_details?.email
   if (!email) {
-    // Payment verified but no email available (guest checkout with no email)
     return res.status(200).json({ ok: true, sent: false, reason: "no-email" })
   }
 
   if (!process.env.RESEND_API_KEY) {
-    // Email sending not configured — log so the owner can see it in Vercel logs
     console.error("[send-download-email] RESEND_API_KEY not set. Skipping email to:", email)
     return res.status(200).json({ ok: true, sent: false, reason: "not-configured" })
   }
 
-  // Build the download URL from the request host so it always matches the live domain
   const protocol = req.headers["x-forwarded-proto"] || "https"
   const host = req.headers["x-forwarded-host"] || req.headers.host
   const downloadUrl = `${protocol}://${host}/ebooks/All%20The%20Black%20Owned%20Babee!.pdf`
+
+  // Fetch the PDF from our own CDN and attach it directly to the email.
+  // Buyers receive the file in their inbox — no link-clicking required.
+  let attachments = []
+  try {
+    const pdfRes = await fetch(downloadUrl)
+    if (pdfRes.ok) {
+      const buffer = await pdfRes.arrayBuffer()
+      attachments = [
+        {
+          filename: "All The Black-Owned, Babee!.pdf",
+          content: Buffer.from(buffer).toString("base64"),
+        },
+      ]
+    }
+  } catch (e) {
+    // Attachment failed — email still sends with the download link
+    console.error("[send-download-email] Could not fetch PDF for attachment:", e.message)
+  }
 
   const emailRes = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -139,11 +156,13 @@ export default async function handler(req, res) {
       Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
     },
     body: JSON.stringify({
-      // IMPORTANT: update the 'from' address to match your verified Resend domain
+      // IMPORTANT: the 'from' domain must be verified in your Resend dashboard.
+      // Replace the domain below if your sending domain differs from your site domain.
       from: `All The Black-Owned, Babee! <hello@${host}>`,
       to: email,
       subject: "Your Digital Download — All The Black-Owned, Babee!",
       html: emailHtml(downloadUrl),
+      attachments,
     }),
   })
 
