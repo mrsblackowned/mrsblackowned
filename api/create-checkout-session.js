@@ -25,10 +25,22 @@ export default async function handler(req, res) {
   const { edition } = req.body || {}
   const product = products[edition] || products.ebook
 
+  // Build a reliable base URL — req.headers.origin is absent on same-origin
+  // POST requests in some browsers/environments, so fall back to the host header
+  // which Vercel always populates with the actual domain serving the request.
+  const protocol = req.headers["x-forwarded-proto"] || "https"
+  const host = req.headers["x-forwarded-host"] || req.headers.host
+  const baseUrl =
+    req.headers.origin && req.headers.origin !== "null"
+      ? req.headers.origin
+      : `${protocol}://${host}`
+
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
+      // Stripe collects the buyer's email — needed to send the download link
+      customer_email: undefined, // let Stripe prompt for it during checkout
       line_items: [
         {
           price_data: {
@@ -42,8 +54,10 @@ export default async function handler(req, res) {
           quantity: 1,
         },
       ],
-      success_url: `${req.headers.origin}/success?edition=${edition || 'ebook'}`,
-      cancel_url: `${req.headers.origin}/`,
+      // {CHECKOUT_SESSION_ID} is a Stripe template variable — replaced with the
+      // real session ID at redirect time, letting us verify payment server-side.
+      success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}&edition=${edition || "ebook"}`,
+      cancel_url: `${baseUrl}/`,
     })
 
     res.status(200).json({ url: session.url })
