@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { Link, useSearchParams } from 'react-router-dom'
 
@@ -6,7 +6,9 @@ const Success = () => {
   const contentRef = useRef(null)
   const [searchParams] = useSearchParams()
   const edition = searchParams.get('edition')
+  const sessionId = searchParams.get('session_id')
   const isEbook = edition === 'ebook'
+  const [emailSent, setEmailSent] = useState(false)
 
   useEffect(() => {
     gsap.from(contentRef.current.children, {
@@ -17,6 +19,19 @@ const Success = () => {
       ease: 'power3.out',
     })
   }, [])
+
+  // After a verified Stripe checkout, send the download link to the buyer's email
+  useEffect(() => {
+    if (!sessionId || !isEbook) return
+    fetch('/api/send-download-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ session_id: sessionId }),
+    })
+      .then((r) => r.json())
+      .then((data) => { if (data?.sent) setEmailSent(true) })
+      .catch(() => {/* silent — download button on page still works */})
+  }, [sessionId, isEbook])
 
   return (
     <section className="min-h-screen flex items-center justify-center px-6 bg-white">
@@ -68,9 +83,11 @@ const Success = () => {
           </Link>
         </div>
 
-        <p className="mt-10 font-body text-[10px] text-black/25 tracking-[0.2em] uppercase">
-          A confirmation has been sent to your email
-        </p>
+        {emailSent && (
+          <p className="mt-10 font-body text-[10px] text-black/25 tracking-[0.2em] uppercase">
+            A download link has been sent to your email
+          </p>
+        )}
       </div>
     </section>
   )
