@@ -7,13 +7,13 @@ const products = {
     name: "All The Black-Owned, Babee! — Digital Edition",
     description:
       "The complete 2026 guide to Black-owned beauty and fragrance — PDF delivered instantly",
-    amount: 3000, // $30.00
+    amount: 4000, // $40.00
   },
   "coffee-table": {
     name: "All The Black-Owned, Babee! — Coffee Table Edition",
     description:
       "The complete 2026 guide to Black-owned beauty and fragrance — hardcover pre-order",
-    amount: 7500, // $75.00
+    amount: 10500, // $105.00
   },
 }
 
@@ -35,12 +35,12 @@ export default async function handler(req, res) {
       ? req.headers.origin
       : `${protocol}://${host}`
 
+  const isCoffeeTable = edition === "coffee-table"
+
   try {
     const session = await stripe.checkout.sessions.create({
       payment_method_types: ["card"],
       mode: "payment",
-      // Stripe collects the buyer's email — needed to send the download link
-      customer_email: undefined, // let Stripe prompt for it during checkout
       line_items: [
         {
           price_data: {
@@ -54,6 +54,40 @@ export default async function handler(req, res) {
           quantity: 1,
         },
       ],
+      // Store edition in metadata so server-side email handler can read it
+      metadata: { edition: edition || "ebook" },
+      // Collect shipping address + calculate tax for physical pre-orders
+      ...(isCoffeeTable && {
+        shipping_address_collection: {
+          allowed_countries: ["US", "CA", "GB", "AU"],
+        },
+        shipping_options: [
+          {
+            shipping_rate_data: {
+              type: "fixed_amount",
+              fixed_amount: { amount: 899, currency: "usd" },
+              display_name: "Standard Shipping",
+              delivery_estimate: {
+                minimum: { unit: "business_day", value: 5 },
+                maximum: { unit: "business_day", value: 10 },
+              },
+            },
+          },
+          {
+            shipping_rate_data: {
+              type: "fixed_amount",
+              fixed_amount: { amount: 1899, currency: "usd" },
+              display_name: "Expedited Shipping",
+              delivery_estimate: {
+                minimum: { unit: "business_day", value: 2 },
+                maximum: { unit: "business_day", value: 5 },
+              },
+            },
+          },
+        ],
+        automatic_tax: { enabled: true },
+        billing_address_collection: "required",
+      }),
       // {CHECKOUT_SESSION_ID} is a Stripe template variable — replaced with the
       // real session ID at redirect time, letting us verify payment server-side.
       success_url: `${baseUrl}/success?session_id={CHECKOUT_SESSION_ID}&edition=${edition || "ebook"}`,
