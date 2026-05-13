@@ -83,7 +83,7 @@ const PurchaseCTA = ({ isOpen, onClose }) => {
 
             <div className="w-10 h-px bg-accent mx-auto mb-5" />
 
-            <p className="font-serif text-2xl text-black mb-1">$30</p>
+            <p className="font-serif text-2xl text-black mb-1">$40</p>
             <p className="font-body text-[10px] uppercase tracking-[0.15em] text-black/30 mb-6">
               PDF delivered immediately
             </p>
@@ -116,7 +116,7 @@ const PurchaseCTA = ({ isOpen, onClose }) => {
 
             <div className="w-10 h-px bg-accent mx-auto mb-5" />
 
-            <p className="font-serif text-2xl text-black mb-1">$75</p>
+            <p className="font-serif text-2xl text-black mb-1">$105</p>
             <p className="font-body text-[10px] uppercase tracking-[0.15em] text-black/30 mb-6">
               Ships when ready
             </p>

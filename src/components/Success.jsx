@@ -20,9 +20,9 @@ const Success = () => {
     })
   }, [])
 
-  // After a verified Stripe checkout, send the download link to the buyer's email
+  // After a verified Stripe checkout, send confirmation email to buyer
   useEffect(() => {
-    if (!sessionId || !isEbook) return
+    if (!sessionId) return
     fetch('/api/send-download-email', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -61,7 +61,7 @@ const Success = () => {
         <p className="font-body text-sm text-black/40 leading-relaxed mb-10">
           {isEbook
             ? 'Click below to download your copy — profiles, essays, and the complete archive.'
-            : 'Check your inbox for your order confirmation and shipping updates.'}
+            : 'A confirmation email with your shipping details is on its way to your inbox.'}
         </p>
 
         {isEbook && (
@@ -85,7 +85,7 @@ const Success = () => {
 
         {emailSent && (
           <p className="mt-10 font-body text-[10px] text-black/25 tracking-[0.2em] uppercase">
-            A download link has been sent to your email
+            {isEbook ? 'A download link has been sent to your email' : 'A confirmation has been sent to your email'}
           </p>
         )}
       </div>
