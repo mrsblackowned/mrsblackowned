@@ -14,6 +14,7 @@ import About from './components/About'
 import FeaturedBrands from './components/FeaturedBrands'
 import FeaturedWork from './components/FeaturedWork'
 import Newsletter from './components/Newsletter'
+import Contact from './components/Contact'
 import Footer from './components/Footer'
 
 const BookFunnel = lazy(() => import('./components/BookFunnel'))
@@ -40,6 +41,7 @@ function HomePage() {
       <Vision />
       <FeaturedWork />
       <Newsletter />
+      <Contact />
       <Footer />
     </>
   )

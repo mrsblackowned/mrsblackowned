@@ -16,7 +16,7 @@ const footerLinks = {
   ],
   Support: [
     { label: 'Refund Policy', href: '/refund-policy' },
-    { label: 'Contact', href: 'mailto:support@mrsblackowned.com' },
+    { label: 'Contact', href: '#contact' },
   ],
 }
 
