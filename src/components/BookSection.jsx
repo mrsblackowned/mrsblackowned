@@ -102,7 +102,7 @@ const BookSection = () => {
             onClick={handleCheckout}
             className="bg-black text-white px-10 py-4 uppercase tracking-[0.2em] text-sm font-body hover:bg-accent hover:text-black transition duration-300 rounded-sm"
           >
-            Buy Now — $30
+            Buy Now — $40
           </button>
         </div>
       </div>
