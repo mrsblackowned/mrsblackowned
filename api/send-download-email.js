@@ -264,7 +264,7 @@ export default async function handler(req, res) {
   const protocol = req.headers["x-forwarded-proto"] || "https"
   const host = req.headers["x-forwarded-host"] || req.headers.host
   const downloadUrl = `${protocol}://${host}/ebooks/All%20The%20Black%20Owned%20Babee!.pdf`
-  const fromAddress = `All The Black-Owned, Babee! <hello@${host}>`
+  const fromAddress = `All The Black-Owned, Babee! <hello@mrsblackowned.com>`
 
   const results = { customerSent: false, businessSent: false }
 

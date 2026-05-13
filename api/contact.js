@@ -15,9 +15,6 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: "Email service not configured" })
   }
 
-  const protocol = req.headers["x-forwarded-proto"] || "https"
-  const host = req.headers["x-forwarded-host"] || req.headers.host
-
   const html = `<!DOCTYPE html>
 <html lang="en">
 <head><meta charset="utf-8" /></head>
@@ -75,7 +72,7 @@ export default async function handler(req, res) {
       Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
     },
     body: JSON.stringify({
-      from: `Mrs Black Owned <hello@${host}>`,
+      from: `Mrs Black Owned <hello@mrsblackowned.com>`,
       to: BUSINESS_EMAIL,
       reply_to: email,
       subject: `New message from ${name} — mrsblackowned.com`,
