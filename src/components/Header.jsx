@@ -3,7 +3,7 @@ const Header = () => {
     <header className="fixed top-0 left-0 right-0 z-50 bg-black py-5 md:py-6">
       <div className="max-w-7xl mx-auto px-6 md:px-10 flex items-center justify-between">
         {/* Social Icons — subtle, secondary */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 md:gap-4">
           {/* Facebook */}
           <a
             href="https://www.facebook.com/share/1GGCCZb8sG/?mibextid=wwXIfr"
@@ -36,7 +36,7 @@ const Header = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Substack"
-            className="text-white/50 hover:text-white transition-colors"
+            className="hidden md:inline-flex text-white/50 hover:text-white transition-colors"
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M22.54 6.42H1.46V4.2h21.08v2.22zM1.46 9.37h21.08V7.15H1.46v2.22zM22.54 12.11H1.46v9.67l10.54-5.93 10.54 5.93v-9.67z" />
