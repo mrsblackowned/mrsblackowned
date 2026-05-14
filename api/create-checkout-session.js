@@ -56,6 +56,8 @@ export default async function handler(req, res) {
       ],
       // Store edition in metadata so server-side email handler can read it
       metadata: { edition: edition || "ebook" },
+      // Allow discount/promo codes at checkout
+      allow_promotion_codes: true,
       // Collect shipping address + calculate tax for physical pre-orders
       ...(isCoffeeTable && {
         shipping_address_collection: {
