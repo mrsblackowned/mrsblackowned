@@ -7,7 +7,7 @@ const Success = () => {
   const [searchParams] = useSearchParams()
   const edition = searchParams.get('edition')
   const sessionId = searchParams.get('session_id')
-  const isEbook = edition === 'ebook'
+  const isEbook = edition !== 'coffee-table'
   const [emailSent, setEmailSent] = useState(false)
 
   useEffect(() => {
