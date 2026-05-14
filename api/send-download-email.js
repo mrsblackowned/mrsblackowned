@@ -245,7 +245,7 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: "Invalid session" })
   }
 
-  if (session.payment_status !== "paid") {
+  if (session.payment_status !== "paid" && session.payment_status !== "no_payment_required") {
     return res.status(402).json({ error: "Payment not completed" })
   }
 
