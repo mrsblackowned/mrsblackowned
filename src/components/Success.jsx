@@ -11,13 +11,11 @@ const Success = () => {
   const [emailSent, setEmailSent] = useState(false)
 
   useEffect(() => {
-    gsap.from(contentRef.current.children, {
-      y: 30,
-      opacity: 0,
-      duration: 0.8,
-      stagger: 0.15,
-      ease: 'power3.out',
-    })
+    gsap.fromTo(
+      contentRef.current.children,
+      { y: 30, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out', clearProps: 'opacity,transform' }
+    )
   }, [])
 
   // After a verified Stripe checkout, send confirmation email to buyer
