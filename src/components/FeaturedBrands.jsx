@@ -50,7 +50,7 @@ const FeaturedBrands = () => {
   }, [])
 
   return (
-    <section ref={sectionRef} className="py-20 md:py-24 px-6 bg-neutral-100 text-black">
+    <section ref={sectionRef} id="directory" className="py-20 md:py-24 px-6 bg-neutral-100 text-black">
       <div className="max-w-5xl mx-auto">
         <div ref={headingRef} className="text-center mb-14">
           <p className="font-body text-[11px] uppercase tracking-[0.3em] text-black/40 mb-4">
