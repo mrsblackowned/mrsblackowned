@@ -5,13 +5,18 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "node scripts/generate-media-kit-pdf.mjs",
     "build": "vite build",
+    "media-kit:pdf": "node scripts/generate-media-kit-pdf.mjs",
     "preview": "vite preview"
   },
   "dependencies": {
     "@fontsource-variable/montserrat": "^5.2.8",
     "@fontsource/cormorant-garamond": "^5.2.11",
     "@fontsource/great-vibes": "^5.2.8",
+    "@fontsource/lora": "^5.2.8",
+    "@fontsource/poppins": "^5.2.7",
+    "@react-pdf/renderer": "^4.5.1",
     "@stripe/stripe-js": "^8.7.0",
     "gsap": "^3.14.2",
     "react": "^19.0.0",

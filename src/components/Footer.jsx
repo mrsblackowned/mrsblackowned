@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react'
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { mediaKit } from '../data/mediaKit'
 
 
 const footerLinks = {
@@ -8,15 +9,6 @@ const footerLinks = {
     { label: 'The Book', href: '#book-funnel' },
     { label: 'Choose Your Edition', href: '#choose-edition' },
     { label: 'What\'s Included', href: '#whats-included' },
-  ],
-  About: [
-    { label: 'The Editor', href: '#about' },
-    { label: 'The Mission', href: '#mission' },
-    { label: 'The Platform', href: '#platform' },
-  ],
-  Support: [
-    { label: 'Refund Policy', href: '/refund-policy' },
-    { label: 'Contact', href: '#contact' },
   ],
 }
 
@@ -103,8 +95,27 @@ const Footer = () => {
             </div>
           ))}
 
+          {/* Media Kit / Partnerships */}
+          <div className="md:col-span-3">
+            <h4 className="font-body text-[10px] uppercase tracking-[0.25em] text-white/50 mb-5 font-semibold">
+              Media Kit
+            </h4>
+            <ul className="space-y-3">
+              {mediaKit.footerNav.map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={item.href}
+                    className="font-body text-xs text-white/30 hover:text-white transition-colors duration-300"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Newsletter mini */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-3">
             <h4 className="font-body text-[10px] uppercase tracking-[0.25em] text-white/50 mb-5 font-semibold">
               Newsletter
             </h4>

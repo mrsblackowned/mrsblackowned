@@ -137,3 +137,6 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Media kit PDF build artifact (regenerated via prebuild script)
+.media-kit-pdf-tmp/

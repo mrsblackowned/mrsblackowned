@@ -20,6 +20,8 @@ import Footer from './components/Footer'
 const BookFunnel = lazy(() => import('./components/BookFunnel'))
 const Success = lazy(() => import('./components/Success'))
 const RefundPolicy = lazy(() => import('./components/RefundPolicy'))
+const MediaKit = lazy(() => import('./components/MediaKit'))
+const MediaKitPrint = lazy(() => import('./components/MediaKit/Print'))
 
 function HomePage() {
   return (
@@ -54,6 +56,8 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/success" element={<Suspense fallback={null}><Success /></Suspense>} />
         <Route path="/refund-policy" element={<Suspense fallback={null}><RefundPolicy /></Suspense>} />
+        <Route path="/media-kit" element={<Suspense fallback={null}><MediaKit /></Suspense>} />
+        <Route path="/media-kit/print" element={<Suspense fallback={null}><MediaKitPrint /></Suspense>} />
       </Routes>
     </div>
   )
